@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Color Picker(Green Version)"
+  },
+  "shortName": {
+    "message": "Color Picker"
+  },
+  "description": {
+    "message": "Green and simple web page color picker"
+  }
+}

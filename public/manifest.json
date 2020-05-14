@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "minimum_chrome_version": "56.0.0",
+  "name": "__MSG_name__",
+  "short_name": "__MSG_shortName__",
+  "description": "__MSG_description__",
+  "offline_enabled": true,
+  "default_locale": "zh_CN",
+  "icons": {},
+  "background": {
+    "page": "background.html",
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": {},
+    "default_popup": "popup.html",
+    "default_title": "__MSG_name__"
+  },
+  "permissions": [
+    "all_urls",
+    "storage",
+    "contextMenus",
+    "desktopCapture",
+    "tabs"
+  ],
+  "web_accessible_resources": [
+    "static/js/*"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
