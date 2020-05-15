@@ -1,11 +1,11 @@
 {
   "name": "color-picker",
   "version": "1.0.0",
-  "description": "",
+  "description": "最简洁方便的网页取色器[chrome插件]",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config=config/webpack.watch.js --watch",
-    "build": "webpack --config=config/webpack.base.js",
+    "build": "webpack --config=config/webpack.prod.js",
     "prewatch": "node config/script.js",
     "prebuild": "node config/script.js",
     "postbuild": "node config/script.js"

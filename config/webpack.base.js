@@ -1,21 +1,17 @@
 /*
  * @Author: elegantYu
  * @Date: 2020-05-11 22:50:09
- * @LastEditTime: 2020-05-14 23:23:44
+ * @LastEditTime: 2020-05-15 10:41:11
  * @总有人要背锅，那为什么不能是我
  */
 const path = require("path");
-const webpack = require("webpack");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const FriendlyErrorWebpackPlugin = require('friendly-errors-webpack-plugin')
 const MincssExtractWebpackPlugin = require("mini-css-extract-plugin");
 const MergeJsonWebpackPlugin = require('merge-jsons-webpack-plugin')
-const VersionList = require('./syncVersion')
-const MergeLocale = require('./mergeLocale')
 const templateList = require('./moreTemplate')
 const chunkNames = require('./chunkNames')
+const MergeLocale = require('./mergeLocale')
 
 const entryList = chunkNames.reduce((obj, { chunk }) => {
   obj[chunk] = path.resolve(__dirname, `../src/${chunk}/index.js`)
@@ -110,7 +106,7 @@ module.exports = {
     },
   },
   plugins: [
-    new webpack.ProgressPlugin(),
+    ...templateList,
     new UglifyJsPlugin({
       test: /\.(js|jsx)/,
       exclude: /node_modules/,
@@ -128,17 +124,11 @@ module.exports = {
         copyUnmodified: true,
       },
     ]),
-    new CleanWebpackPlugin(),
-    new FriendlyErrorWebpackPlugin({
-      clearConsole: false
-    }),
     new MergeJsonWebpackPlugin({
       debug: true,
       output: {
         groupBy: [...MergeLocale]
       }
     }),
-    ...templateList,
-    ...VersionList,
   ],
 };
