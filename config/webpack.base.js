@@ -1,7 +1,7 @@
 /*
  * @Author: elegantYu
  * @Date: 2020-05-11 22:50:09
- * @LastEditTime: 2020-05-15 10:41:11
+ * @LastEditTime: 2020-05-17 01:13:48
  * @总有人要背锅，那为什么不能是我
  */
 const path = require("path");
@@ -23,8 +23,8 @@ module.exports = {
   entry: entryList,
   output: {
     path: path.resolve(__dirname, "../dist"),
-    filename: "static/js/[name]-[hash:6].js",
-    chunkFilename: 'static/js/[name].bundle.js'
+    filename: "static/js/[name].js",
+    chunkFilename: 'static/js/[name].bundle.js',
   },
   resolve: {
     extensions: [".js", ".jsx", ".json"],
@@ -71,6 +71,7 @@ module.exports = {
               plugins: ["@babel/plugin-transform-runtime"],
             },
           },
+          "eslint-loader",
         ],
       },
       {
@@ -114,8 +115,8 @@ module.exports = {
       sourceMap: true,
     }),
     new MincssExtractWebpackPlugin({
-      filename: "static/css/[name]-[contenthash:6].css",
-      chunkFilename: "static/css/[id]-[contenthash:6].css",
+      filename: "static/css/[name].css",
+      chunkFilename: "static/css/[id].css",
     }),
     new CopyWebpackPlugin([
       {
@@ -127,8 +128,8 @@ module.exports = {
     new MergeJsonWebpackPlugin({
       debug: true,
       output: {
-        groupBy: [...MergeLocale]
-      }
+        groupBy: [...MergeLocale],
+      },
     }),
   ],
 };
