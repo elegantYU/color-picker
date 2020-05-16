@@ -1,0 +1,21 @@
+#home {
+  width: 100%;
+  height: calc(100% - 40px);
+  padding-top: 25px;
+
+  .pickerBtn {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-image: radial-gradient(#eee, #fff);
+    cursor: pointer;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 10px;
+    transition: all 0.2s;
+
+    &:focus {
+      transform: scale(0.99);
+    }
+  }
+}

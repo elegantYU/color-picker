@@ -1,0 +1,49 @@
+{
+  "plugins": [
+    "react"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true  //  for common js
+  },
+  "globals": {
+    "chrome": true  //  定义全局变量
+  },
+  "rules": {
+    "comma-dangle": [1, "always-multiline"],
+    "block-spacing": 1,
+    "camelcase": 0,
+    "curly": 1,
+    "eqeqeq": 2,
+    "keyword-spacing": 1,
+    "max-len": 0,
+    "no-control-regex": 0,
+    /* "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+    ], */
+    "one-var": 0,
+    "require-jsdoc": 0,
+    "space-in-parens": 1,
+    "space-infix-ops": 1,
+    "valid-jsdo": 0
+  }
+}
