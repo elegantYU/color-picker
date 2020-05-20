@@ -31,15 +31,6 @@
     "keyword-spacing": 1,
     "max-len": 0,
     "no-control-regex": 0,
-    /* "no-console": [
-        "error",
-        {
-          "allow": [
-            "warn",
-            "error"
-          ]
-        }
-    ], */
     "one-var": 0,
     "require-jsdoc": 0,
     "space-in-parens": 1,

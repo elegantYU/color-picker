@@ -21,16 +21,15 @@ export default class Home extends PureComponent {
     );
   }
 
-  UNSAFE_componentDidMount() {
+  componentDidMount() {
     this.getColor();
   }
 
   render() {
-    console.log('state', this);
     const color = this.hexColor;
     return (
       <div id="home">
-        <div className="pickerBtn" style={{ "border-color": color }}>
+        <div className="pickerBtn" style={{ "borderColor": color }}>
           <i className="pc-iconfont"></i>
         </div>
       </div>

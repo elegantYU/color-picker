@@ -1,0 +1,23 @@
+#ColorPickerPointer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .pointer {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border-width: 5px;
+    border-style: solid;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-gap: 1px;
+    background-color: #f1f1f1;
+    overflow: hidden;
+
+    .pointer-grid-item {}
+  }
+}

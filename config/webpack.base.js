@@ -1,22 +1,16 @@
 /*
  * @Author: elegantYu
  * @Date: 2020-05-11 22:50:09
- * @LastEditTime: 2020-05-17 01:13:48
+ * @LastEditTime: 2020-05-20 18:31:28
  * @总有人要背锅，那为什么不能是我
  */
 const path = require("path");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MincssExtractWebpackPlugin = require("mini-css-extract-plugin");
 const MergeJsonWebpackPlugin = require('merge-jsons-webpack-plugin')
 const templateList = require('./moreTemplate')
-const chunkNames = require('./chunkNames')
 const MergeLocale = require('./mergeLocale')
-
-const entryList = chunkNames.reduce((obj, { chunk }) => {
-  obj[chunk] = path.resolve(__dirname, `../src/${chunk}/index.js`)
-  return obj
-}, {})
+const entryList = require('./entryList')
 
 module.exports = {
   mode: 'production',
@@ -77,7 +71,7 @@ module.exports = {
       {
         test: /\.(sc|c)ss?$/,
         use: [
-          MincssExtractWebpackPlugin.loader,
+          'style-loader',
           "css-loader",
           {
             loader: "postcss-loader",
@@ -113,10 +107,6 @@ module.exports = {
       exclude: /node_modules/,
       parallel: true,
       sourceMap: true,
-    }),
-    new MincssExtractWebpackPlugin({
-      filename: "static/css/[name].css",
-      chunkFilename: "static/css/[id].css",
     }),
     new CopyWebpackPlugin([
       {

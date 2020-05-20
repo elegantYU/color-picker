@@ -1,0 +1,33 @@
+#ColorPickerPanel {
+  width: 160px;
+  height: 42px;
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+  background-color: rgb(49, 51, 61);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+
+  .color-block {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .color-words {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      font-size: 12px;
+      color: #fff;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+}

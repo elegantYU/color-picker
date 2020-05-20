@@ -12,13 +12,25 @@
     "page": "background.html",
     "persistent": true
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "./static/js/vendor.bundle.js",
+        "./static/js/contentScript.js",
+        "./static/js/style.js"
+      ]
+    }
+  ],
   "browser_action": {
     "default_icon": {},
     "default_popup": "popup.html",
     "default_title": "__MSG_name__"
   },
   "permissions": [
-    "all_urls",
+    "<all_urls>",
     "storage",
     "contextMenus",
     "desktopCapture",
