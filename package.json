@@ -4,8 +4,8 @@
   "description": "最简洁方便的网页取色器[chrome插件]",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --config=config/webpack.watch.js --watch",
-    "build": "webpack --config=config/webpack.prod.js",
+    "watch": "webpack --config=config/webpack.watch.js --watch --fix",
+    "build": "webpack --config=config/webpack.prod.js --fix",
     "prewatch": "node config/script.js",
     "prebuild": "node config/script.js",
     "postbuild": "node config/script.js"
@@ -36,6 +36,7 @@
     "file-loader": "^6.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^4.3.0",
+    "lodash": "^4.17.15",
     "merge-jsons-webpack-plugin": "^1.0.21",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",

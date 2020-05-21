@@ -1,7 +1,7 @@
 /*
  * @Author: elegantYu
  * @Date: 2020-05-11 22:50:09
- * @LastEditTime: 2020-05-20 18:31:28
+ * @LastEditTime: 2020-05-21 16:28:49
  * @总有人要背锅，那为什么不能是我
  */
 const path = require("path");
@@ -21,9 +21,9 @@ module.exports = {
     chunkFilename: 'static/js/[name].bundle.js',
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"],
+    extensions: [".js", ".jsx", ".json", ".scss", ".css"],
     alias: {
-      "@pop": path.resolve(__dirname, "src/popup"),
+      "@": path.resolve(__dirname, "src/popup"),
       "@bg": path.resolve(__dirname, "src/background"),
     },
   },

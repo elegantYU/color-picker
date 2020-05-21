@@ -1,5 +1,5 @@
 #ColorPickerPanel {
-  width: 160px;
+  width: 165px;
   height: 42px;
   position: fixed;
   bottom: 2px;
@@ -7,14 +7,15 @@
   background-color: rgb(49, 51, 61);
   display: flex;
   align-items: center;
-  justify-content: center;
   border-radius: 8px;
+  box-sizing: border-box;
+  padding: 0 5px;
 
   .color-block {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
   .color-words {

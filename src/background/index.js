@@ -1,3 +1,4 @@
-import "./getColor"
+import "./getColor";
+import "./captureScreen";
 
-console.log('背景页无事发生')
+console.log("背景页无事发生");

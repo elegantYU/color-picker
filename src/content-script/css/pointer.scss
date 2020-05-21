@@ -4,6 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 2147483646;
 
   .pointer {
     position: absolute;
@@ -17,7 +18,5 @@
     grid-gap: 1px;
     background-color: #f1f1f1;
     overflow: hidden;
-
-    .pointer-grid-item {}
   }
 }

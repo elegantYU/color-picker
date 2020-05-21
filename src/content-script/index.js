@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Pointer from './feature/Pointer.jsx'
-import Panel from './feature/Panel.jsx'
+import Home from './feature/Home.jsx'
 
 if (!document.querySelector('#elegantYu-colorPicker-root')) {
   let dom = document.createElement('div') 
@@ -11,8 +10,7 @@ if (!document.querySelector('#elegantYu-colorPicker-root')) {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Pointer />
-    <Panel />
+    <Home />
   </React.StrictMode>,
   document.getElementById("elegantYu-colorPicker-root")
 );
