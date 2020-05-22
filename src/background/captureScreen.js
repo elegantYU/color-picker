@@ -9,15 +9,15 @@ const startCapture = (data, sendResponse) => {
     },
     (dataURI) => {
       if (chrome.runtime.lastError) {
-        return sendResponse(false);
+        return sendResponse(false)
       }
-      convertToCanvas(data, dataURI, sendResponse);
+      convertToCanvas(data, sendResponse, dataURI);
     }
   );
 };
 
 // 数据转化
-const convertToCanvas = ({ width, height }, data, sendResponse) => {
+const convertToCanvas = ({ width, height }, sendResponse, data) => {
   const img = new Image();
   img.onload = () => {
     const canvas = document.createElement("canvas");
@@ -25,11 +25,10 @@ const convertToCanvas = ({ width, height }, data, sendResponse) => {
     canvas.height = height;
     const ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0, width, height);
-    ctx.imageSmoothingEnabled = true;
 
     currentCanvas = canvas;
 
-    sendResponse(true);
+    sendResponse(true)
   };
   img.src = data;
 };
@@ -47,7 +46,7 @@ const slideGetColors = ({ centerX, centerY }, sendResponse) => {
       const color = currentCanvas
         .getContext("2d")
         .getImageData(originX + idx, originY + i, 1, 1).data || [0, 0, 0];
-      const rgb = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+      const rgb = `rgb(${color[0]},${color[1]},${color[2]})`;
       groups.push(rgb);
     }
   }
@@ -57,6 +56,7 @@ const slideGetColors = ({ centerX, centerY }, sendResponse) => {
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   const { command, data } = message;
+  // const { tab } = sender
   if (command === "startCapture") {
     startCapture(data, sendResponse);
   } else if (command === "slideFetch") {

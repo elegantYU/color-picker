@@ -14,3 +14,19 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("elegantYu-colorPicker-root")
 );
+
+const destoryInstance = () => {
+  document.querySelector('#elegantYu-colorPicker-root').remove()
+}
+
+chrome.runtime.onMessage.addListener((message) => {
+  const { command } = message
+
+  if (command === 'create') {
+    console.log('create')
+  } else if (command === 'destory') {
+    destoryInstance()
+  }
+
+  return true
+})

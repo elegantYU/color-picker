@@ -8,10 +8,11 @@ export default class App extends Component {
     this.state = {
       top: null,
       left: null,
-      centerColor: "#fff",
+      centerColor: "rgb(255,255,255)",
+      centerColorHex: "#FFFFFF",
       colorGroups: [],
     };
-    this.offset = 80;
+    this.offset = 85;
   }
 
   mousemoveHandler = (e) => {
@@ -20,7 +21,7 @@ export default class App extends Component {
       top: e.clientY - this.offset,
       left: e.clientX - this.offset,
     });
-    
+
     chrome.runtime.sendMessage(
       {
         command: "slideFetch",
@@ -30,21 +31,54 @@ export default class App extends Component {
         },
       },
       (colorGroups) => {
-        const midIdx = Math.floor(colorGroups.length / 2) + 1
+        const midIdx = Math.floor(colorGroups.length / 2);
 
         this.setState({
           colorGroups,
           centerColor: colorGroups[midIdx],
+          centerColorHex: this.convertRgbToHex(colorGroups[midIdx]),
         });
       }
     );
+  };
+
+  clickHandler = () => {
+    // 先复制再关闭
+    const tempInput = document.createElement('input')
+    document.body.appendChild(tempInput)
+    tempInput.value = this.state.centerColorHex
+    tempInput.select()
+    if (document.execCommand('copy')) {
+      document.execCommand('copy')
+    }
+    document.body.removeChild(tempInput)
+
+    chrome.runtime.sendMessage({
+      command: "destory",
+      data: {
+        color: this.state.centerColor,
+      },
+    });
+  };
+
+  convertRgbToHex = (rgb) => {
+    const reg = /\(.*\)/g;
+    const colors = reg.exec(rgb)[0].replace(/\(|\)/g, "").split(",");
+
+    return colors
+      .reduce((last, curr) => {
+        const string16 = Number(curr).toString(16);
+        const hex = string16.length === 1 ? `0${string16}` : string16;
+        return last + hex;
+      }, "#")
+      .toUpperCase();
   };
 
   render() {
     return (
       <div
         id="ColorPickerPointer"
-        onMouseMove={ e => this.mousemoveHandler(e) }
+        onMouseMove={(e) => this.mousemoveHandler(e)}
       >
         <div
           className="pointer"
@@ -53,16 +87,23 @@ export default class App extends Component {
             top: `${this.state.top}px`,
             left: `${this.state.left}px`,
           }}
+          onClick={(e) => this.clickHandler(e)}
         >
           {this.state.colorGroups.map((item, i) => (
             <div
               className="pointer-grid-item"
               key={i}
-              style={{ backgroundColor: item || "#fff" }}
+              style={{ backgroundColor: item || "rgb(255,255,255)" }}
             ></div>
           ))}
+
+          <div className="centerBlock"></div>
+          <div className="floatTip">{this.state.centerColorHex}</div>
         </div>
-        <Panel currentColor={this.state.centerColor} />
+        <Panel
+          currentColor={this.state.centerColor}
+          currentColorHex={this.state.centerColorHex}
+        />
       </div>
     );
   }

@@ -31,10 +31,10 @@
   },
   "permissions": [
     "<all_urls>",
+    "tabs",
     "storage",
-    "contextMenus",
-    "desktopCapture",
-    "tabs"
+    "activeTab",
+    "contextMenus"
   ],
   "web_accessible_resources": [
     "static/js/*"

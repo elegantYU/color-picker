@@ -1,7 +1,7 @@
 /*
  * @Author: elegantYu
  * @Date: 2020-05-11 22:50:09
- * @LastEditTime: 2020-05-21 16:28:49
+ * @LastEditTime: 2020-05-23 00:32:44
  * @总有人要背锅，那为什么不能是我
  */
 const path = require("path");
@@ -22,10 +22,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".scss", ".css"],
-    alias: {
-      "@": path.resolve(__dirname, "src/popup"),
-      "@bg": path.resolve(__dirname, "src/background"),
-    },
+    // alias: {
+    //   "@": path.resolve(__dirname, "src/popup"),
+    //   "@bg": path.resolve(__dirname, "src/background"),
+    // },
   },
   module: {
     rules: [
