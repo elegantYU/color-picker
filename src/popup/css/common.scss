@@ -34,6 +34,12 @@ a {
   color: #333;
 }
 
+button {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
 #root {
   width: 240px;
   height: 360px;

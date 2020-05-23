@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   z-index: 2147483646;
-  cursor: none !important;
+  cursor: wait !important;
 
   .pointer {
     position: absolute;
@@ -21,6 +21,7 @@
     grid-gap: 1px;
     background-color: #f1f1f1;
     overflow: hidden;
+    cursor: none !important;
 
     .centerBlock {
       position: absolute;
@@ -47,8 +48,4 @@
       line-height: 28px;
     }
   }
-}
-
-.color-picker-waiting {
-  cursor: wait !important;
 }

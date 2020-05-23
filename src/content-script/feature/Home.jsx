@@ -25,14 +25,10 @@ export default class Home extends Component {
         lastScrollTop: window.scrollY,
         isStart: false,
       });
-      chrome.runtime.sendMessage({ command: "waiting" });
 
       if (!diffDistance) {
-        document.body.classList.remove("color-picker-waiting");
         this.captureScreen();
       } else {
-        const hasClass = Array.from(document.body.classList).filter(v => v === 'color-picker-waiting')
-        !hasClass && document.body.classList.add("color-picker-waiting");
         this.scrollHandler();
       }
     },
@@ -48,14 +44,10 @@ export default class Home extends Component {
       lastWidth: window.innerWidth,
       isStart: false,
     });
-    chrome.runtime.sendMessage({ command: "waiting" });
 
     if (!diffWidth) {
-      document.body.classList.remove("color-picker-waiting");
       this.captureScreen();
     } else {
-      const hasClass = Array.from(document.body.classList).filter(v => v === 'color-picker-waiting')
-      !hasClass && document.body.classList.add("color-picker-waiting");
       this.resizeHandler();
     }
   });
@@ -82,6 +74,6 @@ export default class Home extends Component {
   }
 
   render() {
-    return <Fragment>{this.state.isStart && <Pointer />}</Fragment>;
+    return <Fragment><Pointer isStart={this.state.isStart} /></Fragment>;
   }
 }

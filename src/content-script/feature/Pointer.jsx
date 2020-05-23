@@ -44,14 +44,14 @@ export default class App extends Component {
 
   clickHandler = () => {
     // 先复制再关闭
-    const tempInput = document.createElement('input')
-    document.body.appendChild(tempInput)
-    tempInput.value = this.state.centerColorHex
-    tempInput.select()
-    if (document.execCommand('copy')) {
-      document.execCommand('copy')
+    const tempInput = document.createElement("input");
+    document.body.appendChild(tempInput);
+    tempInput.value = this.state.centerColorHex;
+    tempInput.select();
+    if (document.execCommand("copy")) {
+      document.execCommand("copy");
     }
-    document.body.removeChild(tempInput)
+    document.body.removeChild(tempInput);
 
     chrome.runtime.sendMessage({
       command: "destory",
@@ -75,35 +75,42 @@ export default class App extends Component {
   };
 
   render() {
+    const { ...props } = this.props;
+    const { isStart } = props
+
     return (
       <div
         id="ColorPickerPointer"
         onMouseMove={(e) => this.mousemoveHandler(e)}
       >
-        <div
-          className="pointer"
-          style={{
-            borderColor: this.state.centerColor,
-            top: `${this.state.top}px`,
-            left: `${this.state.left}px`,
-          }}
-          onClick={(e) => this.clickHandler(e)}
-        >
-          {this.state.colorGroups.map((item, i) => (
-            <div
-              className="pointer-grid-item"
-              key={i}
-              style={{ backgroundColor: item || "rgb(255,255,255)" }}
-            ></div>
-          ))}
+        {isStart && (
+          <div
+            className="pointer"
+            style={{
+              borderColor: this.state.centerColor,
+              top: `${this.state.top}px`,
+              left: `${this.state.left}px`,
+            }}
+            onClick={(e) => this.clickHandler(e)}
+          >
+            {this.state.colorGroups.map((item, i) => (
+              <div
+                className="pointer-grid-item"
+                key={i}
+                style={{ backgroundColor: item || "rgb(255,255,255)" }}
+              ></div>
+            ))}
 
-          <div className="centerBlock"></div>
-          <div className="floatTip">{this.state.centerColorHex}</div>
-        </div>
-        <Panel
-          currentColor={this.state.centerColor}
-          currentColorHex={this.state.centerColorHex}
-        />
+            <div className="centerBlock"></div>
+            <div className="floatTip">{this.state.centerColorHex}</div>
+          </div>
+        )}
+        {isStart && (
+          <Panel
+            currentColor={this.state.centerColor}
+            currentColorHex={this.state.centerColorHex}
+          />
+        )}
       </div>
     );
   }

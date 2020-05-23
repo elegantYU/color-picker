@@ -1,5 +1,12 @@
 let currentCanvas = null;
 
+// 通知页面
+const createInstance = () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, ({ id }) => {
+    chrome.tabs.sendMessage(id, { command: 'create' })
+  })
+}
+
 // 截屏
 const startCapture = (data, sendResponse) => {
   chrome.tabs.captureVisibleTab(
@@ -39,8 +46,6 @@ const slideGetColors = ({ centerX, centerY }, sendResponse) => {
   const [originX, originY] = [centerX + distance, centerY + distance];
   let groups = [];
 
-  // console.log("首尾坐标", centerX, centerY);
-
   for (let i = 0; i < 15; i++) {
     for (let idx = 0; idx < 15; idx++) {
       const color = currentCanvas
@@ -57,7 +62,9 @@ const slideGetColors = ({ centerX, centerY }, sendResponse) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   const { command, data } = message;
   // const { tab } = sender
-  if (command === "startCapture") {
+  if (command === 'create') {
+    createInstance()
+  } else if (command === "startCapture") {
     startCapture(data, sendResponse);
   } else if (command === "slideFetch") {
     slideGetColors(data, sendResponse);

@@ -2,10 +2,12 @@ import React, { PureComponent } from "react";
 
 export default class Home extends PureComponent {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.hexColor = ""
-    this.rgbColor = ""
+    this.state = {
+      hexColor: "",
+      rgbColor: "",
+    };
   }
 
   getColor() {
@@ -15,23 +17,34 @@ export default class Home extends PureComponent {
       },
       (colors = []) => {
         const [hex, rgb] = colors;
-        this.hexColor = hex || "#fff"
-        this.rgbColor = rgb || "rgb(255,255,255)"
+        this.setState({
+          hexColor: hex || "#fff",
+          rgbColor: rgb || "rgb(255,255,255)",
+        });
       }
     );
   }
+
+  pickColor = () => {
+    chrome.runtime.sendMessage({
+      command: "create",
+    });
+  };
 
   componentDidMount() {
     this.getColor();
   }
 
   render() {
-    const color = this.hexColor;
     return (
       <div id="home">
-        <div className="pickerBtn" style={{ "borderColor": color }}>
+        <button
+          className="pickerBtn"
+          style={{ borderColor: this.state.hexColor }}
+          onClick={this.pickColor}
+        >
           <i className="pc-iconfont"></i>
-        </div>
+        </button>
       </div>
     );
   }
