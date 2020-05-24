@@ -10,16 +10,29 @@ export default class Home extends PureComponent {
     };
   }
 
+  convertRgbToHex = (rgb) => {
+    const reg = /\(.*\)/g;
+    const colors = reg.exec(rgb)[0].replace(/\(|\)/g, "").split(",");
+
+    return colors
+      .reduce((last, curr) => {
+        const string16 = Number(curr).toString(16);
+        const hex = string16.length === 1 ? `0${string16}` : string16;
+        return last + hex;
+      }, "#")
+      .toUpperCase();
+  };
+
   getColor() {
     chrome.runtime.sendMessage(
       {
         command: "lastColor",
       },
-      (colors = []) => {
-        const [hex, rgb] = colors;
+      (color) => {
+        const hex = this.convertRgbToHex(color);
         this.setState({
-          hexColor: hex || "#fff",
-          rgbColor: rgb || "rgb(255,255,255)",
+          hexColor: hex,
+          rgbColor: color,
         });
       }
     );
@@ -36,15 +49,28 @@ export default class Home extends PureComponent {
   }
 
   render() {
+    const COPY_TEXT = chrome.i18n.getMessage("__MSG_copy__");
+
     return (
       <div id="home">
         <button
           className="pickerBtn"
-          style={{ borderColor: this.state.hexColor }}
+          style={{ backgroundColor: this.state.hexColor }}
           onClick={this.pickColor}
         >
           <i className="pc-iconfont"></i>
         </button>
+
+        <div className="copyGroup">
+          <label>
+            <input type="text" readOnly value={this.state.hexColor} />
+            <span>{COPY_TEXT}</span>
+          </label>
+          <label>
+            <input type="text" readOnly value={this.state.rgbColor} />
+            <span>{COPY_TEXT}</span>
+          </label>
+        </div>
       </div>
     );
   }

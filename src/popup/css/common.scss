@@ -25,7 +25,9 @@ body {
   background-color: #000;
 }
 
-ul, ol, li {
+ul,
+ol,
+li {
   list-style: none;
 }
 
@@ -34,7 +36,8 @@ a {
   color: #333;
 }
 
-button {
+button,
+input {
   border: none;
   box-shadow: none;
   outline: none;

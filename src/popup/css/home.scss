@@ -2,20 +2,46 @@
   width: 100%;
   height: calc(100% - 40px);
   padding-top: 25px;
+  text-align: center;
 
   .pickerBtn {
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    background-image: radial-gradient(#eee, #fff);
     cursor: pointer;
-    margin: 0 auto;
-    border-style: solid;
-    border-width: 10px;
-    transition: all 0.2s;
+    margin-bottom: 20px;
+    background-color: #333;
+    box-shadow: rgba(0, 0, 0, 0.6) 0 2px 6px;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-    &:focus {
-      transform: scale(0.99);
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
+
+  .copyGroup {
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      color: #000;
+
+      input {
+        width: 120px;
+        height: 100%;
+        margin-right: 10px;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      span {
+        width: 50px;
+        height: 100%;
+        text-align: center;
+        line-height: 2;
+        cursor: pointer;
+      }
     }
   }
 }

@@ -28,18 +28,34 @@ const saveColor = ({ color }, tab) =>
     getLocalData(KEY).then((_) => {
       const isEmpty = Object.keys(_).length;
       const data = { title, url, color };
-      let result = ''
+      let result = "";
       if (!isEmpty) {
-        result = {}
-        result[KEY] = {}
-        result[KEY][today] = [data]
+        result = {};
+        result[KEY] = {};
+        result[KEY][today] = [data];
       } else {
         result = Object.assign(_, _[today].push(data));
       }
 
-      chrome.storage.sync.set({ KEY: result })
+      chrome.storage.sync.set({ KEY: result });
       chrome.tabs.sendMessage(id, { command: "destory" });
       resolve();
+    });
+  });
+
+// 获取最近的一个颜色
+const getLastColor = () =>
+  new Promise((resolve) => {
+    getLocalData("colorGroup").then((colorGroup) => {
+      console.log("colorGroup", colorGroup);
+      const isColors = Object.keys(colorGroup).length;
+      if (isColors) {
+        const groups = Object.values(colorGroup).slice(-1);
+        const color = groups.slice(-1).color;
+        resolve(color);
+      } else {
+        resolve("rgb(255, 255, 255)");
+      }
     });
   });
 
@@ -52,6 +68,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   } else if (command === "destory") {
     // 根据指定tabid关闭
     saveColor(data, tab).then(() => sendResponse(true));
+  } else if (command === "lastColor") {
+    getLastColor().then((_) => sendResponse(_));
   }
 
   return true;
