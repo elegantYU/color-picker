@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { convertRgbToHex, convertRgbToHsl } from "../utils";
 
 export default class Home extends PureComponent {
   constructor(props) {
@@ -7,21 +8,11 @@ export default class Home extends PureComponent {
     this.state = {
       hexColor: "",
       rgbColor: "",
+      hslColor: "",
+      couldPick: true,
     };
+    this.checkTabAvailability();
   }
-
-  convertRgbToHex = (rgb) => {
-    const reg = /\(.*\)/g;
-    const colors = reg.exec(rgb)[0].replace(/\(|\)/g, "").split(",");
-
-    return colors
-      .reduce((last, curr) => {
-        const string16 = Number(curr).toString(16);
-        const hex = string16.length === 1 ? `0${string16}` : string16;
-        return last + hex;
-      }, "#")
-      .toUpperCase();
-  };
 
   getColor() {
     chrome.runtime.sendMessage(
@@ -29,19 +20,39 @@ export default class Home extends PureComponent {
         command: "lastColor",
       },
       (color) => {
-        const hex = this.convertRgbToHex(color);
+        const hex = convertRgbToHex(color);
+        const hsl = convertRgbToHsl(color);
+
         this.setState({
           hexColor: hex,
           rgbColor: color,
+          hslColor: hsl,
         });
       }
     );
   }
 
   pickColor = () => {
-    chrome.runtime.sendMessage({
-      command: "create",
+    setTimeout(() => {
+      chrome.runtime.sendMessage({
+        command: "create",
+      });
     });
+    window.close();
+  };
+
+  checkTabAvailability = () => {
+    chrome.runtime.sendMessage(
+      {
+        command: "activeTab",
+      },
+      (_) => {
+        console.log('reg.test(tabs[0].url)', _);
+        this.setState({
+          couldPick: _,
+        });
+      }
+    );
   };
 
   componentDidMount() {
@@ -49,27 +60,29 @@ export default class Home extends PureComponent {
   }
 
   render() {
-    const COPY_TEXT = chrome.i18n.getMessage("__MSG_copy__");
+    const cannotPickText = chrome.i18n.getMessage("cannotPick");
 
     return (
       <div id="home">
-        <button
-          className="pickerBtn"
-          style={{ backgroundColor: this.state.hexColor }}
-          onClick={this.pickColor}
-        >
-          <i className="pc-iconfont"></i>
-        </button>
+        {this.state.couldPick ? (
+          <button
+            className="pickerBtn"
+            style={{ backgroundColor: this.state.hexColor }}
+            onClick={this.pickColor}
+          >
+            Start
+          </button>
+        ) : (
+          <p className="cannotPick">{cannotPickText}</p>
+        )}
 
-        <div className="copyGroup">
-          <label>
-            <input type="text" readOnly value={this.state.hexColor} />
-            <span>{COPY_TEXT}</span>
-          </label>
-          <label>
-            <input type="text" readOnly value={this.state.rgbColor} />
-            <span>{COPY_TEXT}</span>
-          </label>
+        <div
+          className="copyGroup"
+          style={{ backgroundColor: this.state.rgbColor }}
+        >
+          <span className="copy-item">{this.state.rgbColor}</span>
+          <span className="copy-item">{this.state.hexColor}</span>
+          <span className="copy-item">{this.state.hslColor}</span>
         </div>
       </div>
     );

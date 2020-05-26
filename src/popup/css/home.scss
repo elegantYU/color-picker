@@ -4,44 +4,61 @@
   padding-top: 25px;
   text-align: center;
 
+  .header {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 14px;
+    }
+
+    i::before {
+      font-size: 24px;
+    }
+  }
+
   .pickerBtn {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
+    width: 200px;
+    height: 80px;
+    border-radius: 40px;
     cursor: pointer;
     margin-bottom: 20px;
     background-color: #333;
     box-shadow: rgba(0, 0, 0, 0.6) 0 2px 6px;
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 30px;
+    color: #fff;
+    text-shadow:  0 1px #000, 1px 0 #000, -1px 0 #000, 0 -1px #000;
 
     &:hover {
       transform: scale(0.9);
     }
   }
 
+  .cannotPick {
+    margin-bottom: 60px;
+  }
+
   .copyGroup {
-    label {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 36px;
-      color: #000;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 10px 10px 5px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 
-      input {
-        width: 120px;
-        height: 100%;
-        margin-right: 10px;
-        text-align: center;
-        font-size: 14px;
-      }
-
-      span {
-        width: 50px;
-        height: 100%;
-        text-align: center;
-        line-height: 2;
-        cursor: pointer;
-      }
+    .copy-item {
+      margin-right: 5px;
+      margin-bottom: 5px;
+      padding: 3px;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #ff6464;
+      cursor: pointer;
     }
   }
 }

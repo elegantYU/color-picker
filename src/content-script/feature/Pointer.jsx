@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Panel from "./Panel.jsx";
+import { convertRgbToHex } from '../../popup/utils'
 
 export default class App extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ export default class App extends Component {
         this.setState({
           colorGroups,
           centerColor: colorGroups[midIdx],
-          centerColorHex: this.convertRgbToHex(colorGroups[midIdx]),
+          centerColorHex: convertRgbToHex(colorGroups[midIdx]),
         });
       }
     );
@@ -59,19 +60,6 @@ export default class App extends Component {
         color: this.state.centerColor,
       },
     });
-  };
-
-  convertRgbToHex = (rgb) => {
-    const reg = /\(.*\)/g;
-    const colors = reg.exec(rgb)[0].replace(/\(|\)/g, "").split(",");
-
-    return colors
-      .reduce((last, curr) => {
-        const string16 = Number(curr).toString(16);
-        const hex = string16.length === 1 ? `0${string16}` : string16;
-        return last + hex;
-      }, "#")
-      .toUpperCase();
   };
 
   render() {

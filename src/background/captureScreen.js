@@ -2,8 +2,8 @@ let currentCanvas = null;
 
 // 通知页面
 const createInstance = () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, ({ id }) => {
-    chrome.tabs.sendMessage(id, { command: 'create' })
+  chrome.tabs.query({ active: true }, tabs => {
+    chrome.tabs.sendMessage(tabs[0].id, { command: 'create' })
   })
 }
 
@@ -59,15 +59,24 @@ const slideGetColors = ({ centerX, centerY }, sendResponse) => {
   sendResponse(groups);
 };
 
+// 获取当前激活页面
+const getActiveTab = sendResponse => {
+  chrome.tabs.query({active: true}, tabs => {
+    const reg = /chrome:\/\//g
+    sendResponse(!reg.test(tabs[0].url))
+  })
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   const { command, data } = message;
-  // const { tab } = sender
   if (command === 'create') {
     createInstance()
   } else if (command === "startCapture") {
     startCapture(data, sendResponse);
   } else if (command === "slideFetch") {
     slideGetColors(data, sendResponse);
+  } else if (command === 'activeTab') {
+    getActiveTab(sendResponse)
   }
 
   return true;

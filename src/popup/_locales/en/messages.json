@@ -1,5 +1,17 @@
 {
   "copy": {
     "message": "copy"
+  },
+  "routerHome": {
+    "message": "Color Picker"
+  },
+  "routerHistory": {
+    "message": "History"
+  },
+  "routerSetting": {
+    "message": "Setting"
+  },
+  "cannotPick": {
+    "message": "Can't pick from this page😿"
   }
 }

@@ -1,5 +1,17 @@
 {
   "copy": {
     "message": "复制"
+  },
+  "routerHome": {
+    "message": "取色页面"
+  },
+  "routerHistory": {
+    "message": "历史记录"
+  },
+  "routerSetting": {
+    "message": "设置页面"
+  },
+  "cannotPick": {
+    "message": "无法从该页面取色😿"
   }
 }

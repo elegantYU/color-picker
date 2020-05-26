@@ -26,18 +26,21 @@ const saveColor = ({ color }, tab) =>
     const { title, url, id } = tab;
 
     getLocalData(KEY).then((_) => {
-      const isEmpty = Object.keys(_).length;
+      const isEmpty = !Object.keys(_).length;
+      const group = isEmpty ? {} : _[KEY]
       const data = { title, url, color };
       let result = "";
-      if (!isEmpty) {
+      if (isEmpty) {
         result = {};
-        result[KEY] = {};
-        result[KEY][today] = [data];
+        result[today] = [data];
       } else {
-        result = Object.assign(_, _[today].push(data));
+        if (!group[today]) {
+          group[today] = []
+        }
+        result = Object.assign(group, group[today].push(data));
       }
 
-      chrome.storage.sync.set({ KEY: result });
+      chrome.storage.sync.set({ colorGroup: result });
       chrome.tabs.sendMessage(id, { command: "destory" });
       resolve();
     });
@@ -46,12 +49,11 @@ const saveColor = ({ color }, tab) =>
 // 获取最近的一个颜色
 const getLastColor = () =>
   new Promise((resolve) => {
-    getLocalData("colorGroup").then((colorGroup) => {
-      console.log("colorGroup", colorGroup);
+    getLocalData("colorGroup").then(({colorGroup}) => {
       const isColors = Object.keys(colorGroup).length;
       if (isColors) {
-        const groups = Object.values(colorGroup).slice(-1);
-        const color = groups.slice(-1).color;
+        const groups = Object.values(colorGroup).slice(-1)[0];
+        const color = groups.slice(-1)[0].color
         resolve(color);
       } else {
         resolve("rgb(255, 255, 255)");
