@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { convertRgbToHex, convertRgbToHsl, convertRgbToHsv } from "../utils";
-import CopyItem from './copyItem'
+import CopyItem from "./copyItem";
+import HotkeyTip from './hotkeyTIp'
 
 export default class Home extends PureComponent {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class Home extends PureComponent {
       (color) => {
         const hex = convertRgbToHex(color);
         const hsl = convertRgbToHsl(color);
-        const hsv = convertRgbToHsv(color)
+        const hsv = convertRgbToHsv(color);
 
         this.setState({
           hexColor: hex,
@@ -64,15 +65,10 @@ export default class Home extends PureComponent {
 
   render() {
     const cannotPickText = chrome.i18n.getMessage("cannotPick");
-    const hotkeyTip = chrome.i18n.getMessage("hotkeyTip")
 
     return (
       <div id="home">
-        <div className="hotkey-tip">
-          <span>{hotkeyTip}</span>
-          <i className="cp-iconfont"></i>
-        </div>
-
+        <HotkeyTip />
         {this.state.couldPick ? (
           <button
             className="pickerBtn"
