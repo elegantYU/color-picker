@@ -13,7 +13,7 @@ const nowDate = (time) => {
 // 传入 all 或者当天日期
 const getLocalData = (key) =>
   new Promise((resolve) => {
-    chrome.storage.sync.get([key], (result) => {
+    chrome.storage.local.get([key], (result) => {
       resolve(result);
     });
   });
@@ -40,7 +40,7 @@ const saveColor = ({ color }, tab) =>
         result = Object.assign(group, group[today].push(data));
       }
 
-      chrome.storage.sync.set({ colorGroup: result });
+      chrome.storage.local.set({ colorGroup: result });
       chrome.tabs.sendMessage(id, { command: "destory" });
       resolve();
     });
@@ -50,8 +50,8 @@ const saveColor = ({ color }, tab) =>
 const getLastColor = () =>
   new Promise((resolve) => {
     getLocalData("colorGroup").then(({colorGroup}) => {
-      const isColors = Object.keys(colorGroup).length;
-      if (isColors) {
+      // const isColors = Object.keys(colorGroup).length;
+      if (colorGroup) {
         const groups = Object.values(colorGroup).slice(-1)[0];
         const color = groups.slice(-1)[0].color
         resolve(color);

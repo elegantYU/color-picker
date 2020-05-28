@@ -38,10 +38,20 @@
     "tabs",
     "storage",
     "activeTab",
-    "contextMenus"
+    "contextMenus",
+    "unlimitedStorage"
   ],
   "web_accessible_resources": [
     "static/js/*"
   ],
+  "commands": {
+    "start-color-picker": {
+      "suggested_key": {
+        "default": "Alt+Shift+C",
+        "mac": "Alt+Shift+C"
+      },
+      "description": "Start page color-picker"
+    }
+  },
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

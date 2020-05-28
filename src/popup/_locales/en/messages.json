@@ -16,5 +16,8 @@
   },
   "cannotPick": {
     "message": "Can't pick from this page😿"
+  },
+  "hotkeyTip": {
+    "message": "Alt+Shift+C start pick😊"
   }
 }

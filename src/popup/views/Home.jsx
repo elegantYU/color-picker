@@ -64,9 +64,15 @@ export default class Home extends PureComponent {
 
   render() {
     const cannotPickText = chrome.i18n.getMessage("cannotPick");
+    const hotkeyTip = chrome.i18n.getMessage("hotkeyTip")
 
     return (
       <div id="home">
+        <div className="hotkey-tip">
+          <span>{hotkeyTip}</span>
+          <i className="cp-iconfont"></i>
+        </div>
+
         {this.state.couldPick ? (
           <button
             className="pickerBtn"

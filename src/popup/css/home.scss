@@ -1,8 +1,29 @@
 #home {
   width: 100%;
   height: calc(100% - 40px);
-  padding-top: 25px;
+  padding-top: 30px;
   text-align: center;
+  position: relative;
+
+  .hotkey-tip {
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 24px;
+    border-radius: 4px;
+    color: #e6a23c;
+    background-color: #fdf6ec;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    span {
+      font-size: 12px;
+    }
+  }
 
   .pickerBtn {
     width: 220px;

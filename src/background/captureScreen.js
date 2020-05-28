@@ -2,8 +2,8 @@ let currentCanvas = null;
 
 // 通知页面
 const createInstance = () => {
-  chrome.tabs.query({ active: true }, tabs => {
-    chrome.tabs.sendMessage(tabs[0].id, { command: 'create' })
+  chrome.tabs.query({ active: true }, ([tabs]) => {
+    chrome.tabs.sendMessage(tabs.id, { command: 'create' })
   })
 }
 
@@ -81,3 +81,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   return true;
 });
+
+// 快捷键调用
+chrome.commands.onCommand.addListener((command) => {
+  if (command === 'start-color-picker') {
+    createInstance()
+  }
+})

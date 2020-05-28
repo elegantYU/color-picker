@@ -16,5 +16,8 @@
   },
   "cannotPick": {
     "message": "無法從該頁面取色😿"
+  },
+  "hotkeyTip": {
+    "message": "Alt+Shift+C 快速識別😊"
   }
 }
