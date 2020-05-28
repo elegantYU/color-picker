@@ -10,6 +10,7 @@
 
 # production
 /dist
+*.crx
 
 # misc
 .DS_Store
