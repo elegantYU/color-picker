@@ -11,6 +11,7 @@
 # production
 /dist
 *.crx
+dist.zip
 
 # misc
 .DS_Store

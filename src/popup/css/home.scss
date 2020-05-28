@@ -4,23 +4,8 @@
   padding-top: 25px;
   text-align: center;
 
-  .header {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    h1 {
-      font-size: 14px;
-    }
-
-    i::before {
-      font-size: 24px;
-    }
-  }
-
   .pickerBtn {
-    width: 200px;
+    width: 220px;
     height: 80px;
     border-radius: 40px;
     cursor: pointer;
@@ -42,7 +27,7 @@
   }
 
   .copyGroup {
-    width: 200px;
+    width: 220px;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     padding: 10px 10px 5px;
