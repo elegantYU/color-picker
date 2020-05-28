@@ -2,6 +2,9 @@
   "copy": {
     "message": "copy"
   },
+  "copied": {
+    "message": "copied!"
+  },
   "routerHome": {
     "message": "Color Picker"
   },

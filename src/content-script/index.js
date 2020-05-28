@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Home from './feature/Home.jsx'
 
-const createInstance = () => {
-  if (!document.querySelector('#elegantYu-colorPicker-root')) {
-    let dom = document.createElement('div') 
-    dom.id = 'elegantYu-colorPicker-root'
-    document.body.appendChild(dom)
-  }
-  
+if (!document.querySelector('#elegantYu-colorPicker-root')) {
+  let dom = document.createElement('div') 
+  dom.id = 'elegantYu-colorPicker-root'
+  document.body.appendChild(dom)
+}
+
+const create = () => {
   ReactDOM.render(
     <React.StrictMode>
       <Home />
@@ -17,19 +17,17 @@ const createInstance = () => {
   );
 }
 
-const destoryInstance = () => {
-  document.querySelector('#elegantYu-colorPicker-root').remove()
+const destory = () => {
+  ReactDOM.unmountComponentAtNode(document.getElementById("elegantYu-colorPicker-root"))
 }
 
 chrome.runtime.onMessage.addListener((message) => {
   const { command } = message
 
   if (command === 'create') {
-    console.log('create')
-    createInstance()
+    create()
   } else if (command === 'destory') {
-    destoryInstance()
+    destory()
   }
-
   return true
 })

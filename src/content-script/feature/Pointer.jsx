@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Panel from "./Panel.jsx";
-import { convertRgbToHex } from '../../popup/utils'
+import { convertRgbToHex } from "../../popup/utils";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isMove: false,
       top: null,
       left: null,
       centerColor: "rgb(255,255,255)",
@@ -22,6 +23,12 @@ export default class App extends Component {
       top: e.clientY - this.offset,
       left: e.clientX - this.offset,
     });
+
+    if (!this.state.isMove) {
+      this.setState({
+        isMove: true,
+      });
+    }
 
     chrome.runtime.sendMessage(
       {
@@ -64,14 +71,14 @@ export default class App extends Component {
 
   render() {
     const { ...props } = this.props;
-    const { isStart } = props
+    const { isStart } = props;
 
     return (
       <div
         id="ColorPickerPointer"
         onMouseMove={(e) => this.mousemoveHandler(e)}
       >
-        {isStart && (
+        {isStart && this.state.isMove && (
           <div
             className="pointer"
             style={{

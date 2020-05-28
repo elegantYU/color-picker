@@ -2,6 +2,9 @@
   "copy": {
     "message": "複製"
   },
+  "copied": {
+    "message": "已復制!"
+  },
   "routerHome": {
     "message": "取色頁面"
   },

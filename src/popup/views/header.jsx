@@ -53,7 +53,7 @@ export default class RouterHeader extends Component {
     return (
       <div className="header">
         <h1>{this.state.title}</h1>
-        <i className="cp-iconfont cp-setting" onClick={this.clickHandler}></i>
+        {/* <i className="cp-iconfont cp-setting" onClick={this.clickHandler}></i> */}
         {this.state.isShow && (
           <div id="footer-nav">
             <Link className="nav-block">历史记录</Link>

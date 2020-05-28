@@ -13,14 +13,12 @@ export default class Home extends Component {
       lastScrollTop: 0,
       lastWidth: width,
     };
-
-    window.onscroll = (e) => this.scrollHandler(e);
-    window.onresize = (e) => this.resizeHandler(e);
   }
 
   scrollHandler = _.debounce(
     () => {
       const diffDistance = Math.abs(window.scrollY - this.state.lastScrollTop);
+      document.body.classList.add("cp-waiting");
       this.setState({
         lastScrollTop: window.scrollY,
         isStart: false,
@@ -32,25 +30,32 @@ export default class Home extends Component {
         this.scrollHandler();
       }
     },
-    250,
+    300,
     {
       leading: true,
     }
   );
 
-  resizeHandler = _.debounce(() => {
-    const diffWidth = Math.abs(window.innerWidth - this.state.lastWidth);
-    this.setState({
-      lastWidth: window.innerWidth,
-      isStart: false,
-    });
+  resizeHandler = _.debounce(
+    () => {
+      const diffWidth = Math.abs(window.innerWidth - this.state.lastWidth);
+      document.body.classList.add("cp-waiting");
+      this.setState({
+        lastWidth: window.innerWidth,
+        isStart: false,
+      });
 
-    if (!diffWidth) {
-      this.captureScreen();
-    } else {
-      this.resizeHandler();
+      if (!diffWidth) {
+        this.captureScreen();
+      } else {
+        this.resizeHandler();
+      }
+    },
+    300,
+    {
+      leading: true,
     }
-  });
+  );
 
   captureScreen = () => {
     chrome.runtime.sendMessage(
@@ -61,7 +66,8 @@ export default class Home extends Component {
           height: window.innerHeight,
         },
       },
-      data => {
+      (data) => {
+        document.body.classList.remove("cp-waiting");
         this.setState({
           isStart: data,
         });
@@ -71,9 +77,20 @@ export default class Home extends Component {
 
   componentDidMount() {
     this.captureScreen();
+    window.addEventListener("scroll", this.scrollHandler, false);
+    window.addEventListener("resize", this.resizeHandler, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.scrollHandler, false);
+    window.removeEventListener("resize", this.resizeHandler, false);
   }
 
   render() {
-    return <Fragment><Pointer isStart={this.state.isStart} /></Fragment>;
+    return (
+      <Fragment>
+        <Pointer isStart={this.state.isStart} />
+      </Fragment>
+    );
   }
 }

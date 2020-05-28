@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
-import { convertRgbToHex, convertRgbToHsl } from "../utils";
+import { convertRgbToHex, convertRgbToHsl, convertRgbToHsv } from "../utils";
+import CopyItem from './copyItem'
 
 export default class Home extends PureComponent {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class Home extends PureComponent {
       hexColor: "",
       rgbColor: "",
       hslColor: "",
+      hsvColor: "",
       couldPick: true,
     };
     this.checkTabAvailability();
@@ -22,11 +24,13 @@ export default class Home extends PureComponent {
       (color) => {
         const hex = convertRgbToHex(color);
         const hsl = convertRgbToHsl(color);
+        const hsv = convertRgbToHsv(color)
 
         this.setState({
           hexColor: hex,
           rgbColor: color,
           hslColor: hsl,
+          hsvColor: hsv,
         });
       }
     );
@@ -47,7 +51,6 @@ export default class Home extends PureComponent {
         command: "activeTab",
       },
       (_) => {
-        console.log('reg.test(tabs[0].url)', _);
         this.setState({
           couldPick: _,
         });
@@ -80,9 +83,10 @@ export default class Home extends PureComponent {
           className="copyGroup"
           style={{ backgroundColor: this.state.rgbColor }}
         >
-          <span className="copy-item">{this.state.rgbColor}</span>
-          <span className="copy-item">{this.state.hexColor}</span>
-          <span className="copy-item">{this.state.hslColor}</span>
+          <CopyItem text={this.state.rgbColor} />
+          <CopyItem text={this.state.hexColor} />
+          <CopyItem text={this.state.hslColor} />
+          <CopyItem text={this.state.hsvColor} />
         </div>
       </div>
     );
