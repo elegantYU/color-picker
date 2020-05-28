@@ -7,7 +7,11 @@
   "description": "__MSG_description__",
   "offline_enabled": true,
   "default_locale": "zh_CN",
-  "icons": {},
+  "icons": {
+    "16": "static/icons/icon16.png",
+    "48": "static/icons/icon48.png",
+    "128": "static/icons/icon128.png"
+  },
   "background": {
     "page": "background.html",
     "persistent": true
