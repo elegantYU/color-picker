@@ -1,8 +1,8 @@
 // 颜色转换代码
 
 const splitRgb = (rgb) => {
-  const reg = /\(.*\)/g;
-  return reg.exec(rgb)[0].replace(/\(|\)/g, "").split(",");
+  const reg = /\((.*)\)/g;
+  return reg.exec(rgb)[1].split(",") || [255,255,255];
 };
 
 const convertRgbToHex = (rgb) => {

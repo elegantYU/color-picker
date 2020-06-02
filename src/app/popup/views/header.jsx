@@ -17,6 +17,7 @@ export default class RouterHeader extends Component {
       ["/history", routerHistory],
       ["/setting", routerSetting],
     ]);
+
     this.state = {
       isShow: false,
       title: routerHome,
@@ -36,7 +37,7 @@ export default class RouterHeader extends Component {
     }
   };
 
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.props.history.listen((location) => {
       const currentPath = location.pathname
       if (this.props.location.pathname !== currentPath) {
@@ -49,12 +50,14 @@ export default class RouterHeader extends Component {
   }
 
   render() {
+    const { isShow, title } = this.state
+
     // 事件绑定函数别加括号啊...
     return (
       <div className="header">
-        <h1>{this.state.title}</h1>
+        <h1>{title}</h1>
         {/* <i className="cp-iconfont cp-setting" onClick={this.clickHandler}></i> */}
-        {this.state.isShow && (
+        {isShow && (
           <div id="footer-nav">
             <Link className="nav-block">历史记录</Link>
             <Link className="nav-block" to="/setting">设置</Link>

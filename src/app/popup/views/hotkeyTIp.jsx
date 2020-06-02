@@ -19,23 +19,25 @@ export default class HotkeyTip extends Component {
 
   checkTip = () => {
     const closed = localStorage.getItem("hotkeyTip-close") || false;
+    
     this.setState({
       hotkeyTip: !closed,
     });
   };
 
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.checkTip();
   }
 
   render() {
-    const hotkeyTip = chrome.i18n.getMessage("hotkeyTip");
+    const hotkeyText = chrome.i18n.getMessage("hotkeyTip");
+    const { hotkeyTip } = this.state
 
     return (
       <Fragment>
-        {this.state.hotkeyTip && (
+        {hotkeyTip && (
           <div className="hotkey-tip">
-            <span>{hotkeyTip}</span>
+            <span>{hotkeyText}</span>
             <i
               className="cp-iconfont cp-searchclose"
               onClick={this.closeTip}
