@@ -5,10 +5,10 @@
   "copied": {
     "message": "已复制!"
   },
-  "routerHome": {
-    "message": "取色页面"
+  "anchorHome": {
+    "message": "取色"
   },
-  "routerHistory": {
+  "anchorHistory": {
     "message": "历史记录"
   },
   "routerSetting": {

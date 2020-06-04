@@ -5,10 +5,10 @@
   "copied": {
     "message": "copied!"
   },
-  "routerHome": {
-    "message": "Color Picker"
+  "anchorHome": {
+    "message": "Get Color"
   },
-  "routerHistory": {
+  "anchorHistory": {
     "message": "History"
   },
   "routerSetting": {

@@ -1,0 +1,37 @@
+.hotkey-tip {
+  position: fixed;
+  top: 45px;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  width: 220px;
+  height: 24px;
+  border-radius: 4px;
+  color: #e6a23c;
+  background-color: #fdf6ec;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s;
+  opacity: 0;
+
+  span {
+    font-size: 12px;
+  }
+
+  i {
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  // animate
+  &.slideUp {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  &.slideDown {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}

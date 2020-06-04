@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-02 15:51:20
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-02 16:31:09
+ * @LastEditTime: 2020-06-05 00:15:49
  * @Description: 颜色历史记录
  */
 
@@ -54,4 +54,18 @@ const getLastColor = () =>
 		});
 	});
 
-export { saveColor, getLastColor };
+const getLastSevenDaysColor = () => new Promise(resolve => {
+	localGet("colorGroup").then(({ colorGroup }) => {
+		if (colorGroup) {
+			const sevenDay = Object.values(colorGroup).slice(-7)
+			const colors = [].concat.apply([], sevenDay).map(v => v.color)
+			const duplicateColors = [...new Set(colors)]
+
+			resolve(duplicateColors)
+		} else {
+			resolve(false)
+		}
+	})
+})
+
+export { saveColor, getLastColor, getLastSevenDaysColor };

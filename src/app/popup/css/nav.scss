@@ -1,29 +1,47 @@
 .header {
   width: 100%;
-  height: 40px;
-  padding: 0 20px;
+  height: 50px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 50%;
+    width: calc(100% - 20px);
+    height: 1px;
+    background-color: #eee;
+    transform: translateX(-50%);
+  }
 
   h1 {
+    display: flex;
+    align-items: center;
     font-weight: normal;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
+
+    img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      margin-right: 6px;
+    }
   }
 
-  i:before {
-    font-size: 20px;
+  a::before {
+    font-size: 24px;
     cursor: pointer;
+    color: #999;
+    transition: all 0.2s;
   }
-}
-
-#footer-nav {
-  width: 100%;
-  height: 50px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #fff;
-  box-shadow: rgba($color: #000000, $alpha: 0.06) 0px -2px 6px;
+  a:hover {
+    &::before {
+      color: #666;
+    }
+  }
 }

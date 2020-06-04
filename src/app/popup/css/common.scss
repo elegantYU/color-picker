@@ -45,7 +45,11 @@ input {
 
 #root {
   width: 240px;
-  min-height: 280px;
+  max-height: 320px;
   background-color: #fff;
   padding-bottom: 20px;
+}
+
+.app {
+  height: 320px;
 }
