@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from "react";
-import RouterHeader from './header'
-import CopyItem from "./copyItem";
+import RouterHeader from '../components/header'
+import CopyItem from "../components/copyItem";
 import History from "./History";
 import { lastColor, activeTab, create } from "../../service";
 import { convertRgbToHex, convertRgbToHsl, convertRgbToHsv } from "../../utils";

@@ -47,8 +47,8 @@
   "commands": {
     "start-color-picker": {
       "suggested_key": {
-        "default": "Alt+Shift+C",
-        "mac": "Alt+Shift+C"
+        "default": "Alt+C",
+        "mac": "Alt+C"
       },
       "description": "Start page color-picker"
     }

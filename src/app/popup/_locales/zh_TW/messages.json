@@ -1,23 +1,26 @@
 {
-  "copy": {
-    "message": "複製"
-  },
-  "copied": {
-    "message": "已復制!"
-  },
-  "anchorHome": {
-    "message": "取色"
-  },
-  "anchorHistory": {
-    "message": "歷史記錄"
-  },
-  "routerSetting": {
-    "message": "設置頁面"
-  },
-  "cannotPick": {
-    "message": "無法從該頁面取色😿"
-  },
-  "hotkeyTip": {
-    "message": "Alt+Shift+C 快速識別😊"
-  }
+	"copy": {
+		"message": "複製"
+	},
+	"copied": {
+		"message": "已復制!"
+	},
+	"anchorHome": {
+		"message": "取色"
+	},
+	"anchorHistory": {
+		"message": "歷史記錄"
+	},
+	"historyTip": {
+		"message": "記錄最近7天顏色"
+	},
+	"routerSetting": {
+		"message": "設置頁面"
+	},
+	"cannotPick": {
+		"message": "無法從該頁面取色😿"
+	},
+	"hotkeyTip": {
+		"message": "Alt+Shift+C 快速識別😊"
+	}
 }

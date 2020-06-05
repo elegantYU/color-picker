@@ -11,6 +11,9 @@
   "anchorHistory": {
     "message": "History"
   },
+  "historyTip": {
+    "message": "Record the last 7 days of color"
+  },
   "routerSetting": {
     "message": "Setting"
   },

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { HashRouter, Switch, Route } from "react-router-dom";
-import HotkeyTip from "./hotkeyTIp";
+import HotkeyTip from "../components/hotkeyTIp";
 import Home from './Home'
 import Setting from './Setting'
 
