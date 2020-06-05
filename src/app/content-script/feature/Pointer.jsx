@@ -69,24 +69,21 @@ export default class App extends Component {
 			<div id="ColorPickerPointer" onMouseMove={(e) => this.mousemoveHandler(e)}>
 				{isStart && isMove && (
 					<div
-						className="pointer"
-						style={{
-							borderColor: centerColor,
-							top: `${top}px`,
-							left: `${left}px`,
-						}}
-						onClick={(e) => this.clickHandler(e)}
+						className="pointer-wrapper"
+						style={{ top: `${top}px`, left: `${left}px`, backgroundColor: centerColor }}
 					>
-						{colorGroups.map((item, i) => (
-							<div
-								className="pointer-grid-item"
-								key={i}
-								style={{ backgroundColor: item || "rgb(255,255,255)" }}
-							></div>
-						))}
+						<div className="pointer" onClick={(e) => this.clickHandler(e)}>
+							{colorGroups.map((item, i) => (
+								<div
+									className="pointer-grid-item"
+									key={i}
+									style={{ backgroundColor: item || "rgb(255,255,255)" }}
+								></div>
+							))}
 
-						<div className="centerBlock"></div>
-						<div className="floatTip">{centerColorHex}</div>
+							<div className="centerBlock"></div>
+							<div className="floatTip">{centerColorHex}</div>
+						</div>
 					</div>
 				)}
 				{isStart && <Panel currentColor={centerColor} currentColorHex={centerColorHex} />}
