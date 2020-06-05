@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-02 15:51:20
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-05 00:15:49
+ * @LastEditTime: 2020-06-06 01:20:00
  * @Description: 颜色历史记录
  */
 
@@ -13,6 +13,24 @@ const nowDate = (time) => {
 	return date.toLocaleDateString();
 };
 
+//	只存7天数据，避免数据溢出
+const deleteExceedDay = (colorGroup) => {
+	const keys = Object.keys(colorGroup);
+	const needDel = keys.length > 7;
+
+	if (needDel) {
+		const pure = keys.slice(-6); //	截取最近6天数据
+		const result = pure.reduce((obj, day) => {
+			obj[day] = colorGroup[day];
+			return obj;
+		}, {});
+
+		return result;
+	}
+
+	return colorGroup;
+};
+
 // 保存颜色
 const saveColor = ({ color }, { title, url, id }) =>
 	new Promise((resolve) => {
@@ -20,7 +38,7 @@ const saveColor = ({ color }, { title, url, id }) =>
 
 		localGet("colorGroup").then((data) => {
 			const isEmpty = !Object.keys(data).length;
-			const oldData = isEmpty ? {} : data["colorGroup"];
+			const oldData = isEmpty ? {} : deleteExceedDay(data["colorGroup"])
 			const item = { title, url, color };
 
 			// 是否有记录
@@ -54,18 +72,19 @@ const getLastColor = () =>
 		});
 	});
 
-const getLastSevenDaysColor = () => new Promise(resolve => {
-	localGet("colorGroup").then(({ colorGroup }) => {
-		if (colorGroup) {
-			const sevenDay = Object.values(colorGroup).slice(-7)
-			const colors = [].concat.apply([], sevenDay).map(v => v.color)
-			const duplicateColors = [...new Set(colors)]
+const getLastSevenDaysColor = () =>
+	new Promise((resolve) => {
+		localGet("colorGroup").then(({ colorGroup }) => {
+			if (colorGroup) {
+				const sevenDay = Object.values(colorGroup).slice(-7);
+				const colors = [].concat.apply([], sevenDay).map((v) => v.color);
+				const duplicateColors = [...new Set(colors)];
 
-			resolve(duplicateColors)
-		} else {
-			resolve(false)
-		}
-	})
-})
+				resolve(duplicateColors);
+			} else {
+				resolve([]);
+			}
+		});
+	});
 
 export { saveColor, getLastColor, getLastSevenDaysColor };

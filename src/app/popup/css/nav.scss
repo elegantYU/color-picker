@@ -4,7 +4,7 @@
   padding: 0 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
 
   &::after {
@@ -23,23 +23,24 @@
     align-items: center;
     font-weight: normal;
     color: #000;
-    font-size: 14px;
+    font-size: 16px;
+    cursor: pointer;
 
     img {
-      width: 30px;
-      height: 30px;
+      width: 24px;
+      height: 24px;
       object-fit: contain;
       margin-right: 6px;
     }
   }
 
-  a::before {
+  i::before {
     font-size: 24px;
     cursor: pointer;
     color: #999;
     transition: all 0.2s;
   }
-  a:hover {
+  i:hover {
     &::before {
       color: #666;
     }

@@ -1,22 +1,33 @@
-import React, { PureComponent } from 'react'
-import { HashRouter, Switch, Route } from "react-router-dom";
+import React, { PureComponent } from "react";
 import HotkeyTip from "../components/hotkeyTIp";
-import Home from './Home'
-import Setting from './Setting'
+import Home from "./Home";
+// import Profile from "./Profile";
 
 export default class App extends PureComponent {
-  render() {
-    return (
-      <div className="app">
-        <HashRouter>
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path="/home" component={Home} />
-            <Route path="/setting" component={Setting} />
-          </Switch>
-          <HotkeyTip />
-        </HashRouter>
-      </div>
-    )
-  }
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			isProfile: false,
+		};
+	}
+
+	profilePageHandler = (status) => {
+    console.log('recive', status);
+		this.setState({
+			isProfile: status,
+		});
+	};
+
+	render() {
+		// const { isProfile } = this.state;
+
+		return (
+			<div className="app">
+				<Home openSetting={this.profilePageHandler} />
+				{/* {isProfile && <Profile closeSeting={this.profilePageHandler} />} */}
+				<HotkeyTip />
+			</div>
+		);
+	}
 }

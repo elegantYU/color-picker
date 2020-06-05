@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from "react";
-import RouterHeader from '../components/header'
+import PropTypes from "prop-types";
+import Header from "../components/header";
 import CopyItem from "../components/copyItem";
 import History from "./History";
 import { lastColor, activeTab, create } from "../../service";
@@ -60,11 +61,12 @@ export default class Home extends PureComponent {
 		const cannotPickText = chrome.i18n.getMessage("cannotPick");
 		const anchorHome = chrome.i18n.getMessage("anchorHome");
 		const { colors, couldPick } = this.state;
+		const { openSetting } = this.props;
 		const randomLinear = this.getRandomBg();
 
 		return (
 			<Fragment>
-				<RouterHeader />
+				<Header openSetting={openSetting} />
 				<div className="content">
 					<div id="home">
 						<h1>{anchorHome}</h1>
@@ -88,3 +90,7 @@ export default class Home extends PureComponent {
 		);
 	}
 }
+
+Home.propTypes = {
+	openSetting: PropTypes.func,
+};

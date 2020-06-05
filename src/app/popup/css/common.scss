@@ -11,7 +11,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
 	margin: 0;
 	padding: 0;
 }
@@ -47,11 +48,11 @@ input {
 	width: 240px;
 	max-height: 320px;
 	background-color: #fff;
-	padding-bottom: 20px;
 }
 
 .app {
 	height: 320px;
+	position: relative;
 }
 
 ::-webkit-scrollbar {

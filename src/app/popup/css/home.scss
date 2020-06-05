@@ -2,6 +2,7 @@
 	height: calc(100% - 50px);
 	overflow: auto;
 	scroll-behavior: smooth;
+	padding-bottom: 15px;
 }
 
 #home {
@@ -11,7 +12,7 @@
 
 	h1 {
 		font-size: 14px;
-		font-weight: bold;
+		font-weight: normal;
 		line-height: 40px;
 		padding-left: 10px;
 		color: #333;
@@ -100,13 +101,13 @@
 	background-image: linear-gradient(-30deg, #36e3ce, #d0e6a5, #ffdd95, #fd9385, #ccabda);
 }
 .linearColor3 {
-	background-image: linear-gradient(45deg, #69524e, #c0a29b, #3e2c2b, #a26a77, #827783);
+	background-image: linear-gradient(15deg, #69524e, #c0a29b, #3e2c2b, #a26a77, #827783);
 }
 .linearColor4 {
-	background-image: linear-gradient(15deg, #f3ccdb, #e5e5f3, #a8d1e1, #62a9c8, #147ebc);
+	background-image: linear-gradient(25deg, #f3ccdb, #e5e5f3, #a8d1e1, #62a9c8, #147ebc);
 }
 .linearColor5 {
-	background-image: linear-gradient(-45deg, #6ac7e5, #feb25d, #ffd154, #ff5685, #ffc4c8);
+	background-image: linear-gradient(-15deg, #6ac7e5, #feb25d, #ffd154, #ff5685, #ffc4c8);
 }
 .linearColor6 {
 	background-image: linear-gradient(-15deg, #faba96, #33539e, #f29c0f, #a567be, #e67c09);
@@ -118,7 +119,7 @@
 	background-image: linear-gradient(20deg, #0162a7, #3e9fb2, #feb500, #cd9489, #b41d6c);
 }
 .linearColor9 {
-	background-image: linear-gradient(35deg, #ed4557, #b8010b, #d9569e, #2b1b2a, #fcbc52);
+	background-image: linear-gradient(25deg, #ed4557, #b8010b, #d9569e, #2b1b2a, #fcbc52);
 }
 .linearColor10 {
 	background-image: linear-gradient(30deg, #3d6656, #253e33, #a52f09, #ff7e40, #ffbac6);
@@ -136,5 +137,5 @@
 	background-image: linear-gradient(25deg, #947839, #751102, #e78332, #efb20c, #326569);
 }
 .linearColor15 {
-	background-image: linear-gradient(40deg, #999, #555, #fb6602, #f6a705, #af948f);
+	background-image: linear-gradient(20deg, #999, #555, #fb6602, #f6a705, #af948f);
 }

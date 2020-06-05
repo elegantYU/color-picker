@@ -1,4 +1,6 @@
 ## color-picker
+[![time tracker](https://wakatime.com/badge/github/elegantYU/color-picker.svg)](https://wakatime.com/badge/github/elegantYU/color-picker)
+
 > 在下独立开发的第二款浏览器插件
 
 开发流程，移步[我的博客](https://elegantyu.github.io/)

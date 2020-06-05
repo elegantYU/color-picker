@@ -14,9 +14,6 @@
 	"historyTip": {
 		"message": "記錄最近7天顏色"
 	},
-	"routerSetting": {
-		"message": "設置頁面"
-	},
 	"cannotPick": {
 		"message": "無法從該頁面取色😿"
 	},
