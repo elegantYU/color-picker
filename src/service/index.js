@@ -1,13 +1,13 @@
 /*
  * @Date: 2020-06-01 10:50:08
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-06 18:15:04
+ * @LastEditTime: 2020-06-06 18:31:32
  * @Description: 服务层接口（指background）
  */
 
 import { createInstance, startCapture, slideGetColors, getActiveTab } from "./captureScreen";
 import { saveColor, getLastColor, getLastSevenDaysColor } from "./historyColor";
-import createTab from './creatTab'
+import createTab from "./creatTab";
 
 const RUNTIME_COMMANDS = new Map([
 	["create", () => createInstance()],
@@ -23,7 +23,7 @@ const RUNTIME_COMMANDS = new Map([
 	["destory", (sendResponse, data, tab) => saveColor(data, tab).then(() => sendResponse(true))],
 	["lastColor", (sendResponse) => getLastColor().then((_) => sendResponse(_))],
 	["lastSevenDay", (sendResponse) => getLastSevenDaysColor().then((_) => sendResponse(_))],
-	["createTab", (sendResponse, data) => createTab(data).then(() => sendResponse())]
+	["createTab", (sendResponse, data) => createTab(data).then(() => sendResponse())],
 ]);
 
 const SHORTCUT_COMMANDS = new Map([["start-color-picker", () => createInstance()]]);
@@ -40,5 +40,5 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 // 快捷键监听
 chrome.commands.onCommand.addListener((command) => {
-	SHORTCUT_COMMANDS.get(command)()
+	SHORTCUT_COMMANDS.get(command)();
 });
