@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-02 17:01:30
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-05 00:00:07
+ * @LastEditTime: 2020-06-06 18:21:49
  * @Description: popup 与 content-script 的封装接口
  */
 
@@ -38,4 +38,7 @@ const activeTab = () => sendMessage({ command: "activeTab" });
 // 获取近7天的采集数据
 const lastSevenDay = () => sendMessage({ command: "lastSevenDay" });
 
-export { startCapture, slideFetch, destory, lastColor, create, activeTab, lastSevenDay };
+// 打开新页面
+const createTab = (data) => sendMessage({ command: "createTab", data })
+
+export { startCapture, slideFetch, destory, lastColor, create, activeTab, lastSevenDay, createTab };

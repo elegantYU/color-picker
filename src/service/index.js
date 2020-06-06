@@ -1,12 +1,13 @@
 /*
  * @Date: 2020-06-01 10:50:08
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-05 15:23:34
+ * @LastEditTime: 2020-06-06 18:15:04
  * @Description: 服务层接口（指background）
  */
 
 import { createInstance, startCapture, slideGetColors, getActiveTab } from "./captureScreen";
 import { saveColor, getLastColor, getLastSevenDaysColor } from "./historyColor";
+import createTab from './creatTab'
 
 const RUNTIME_COMMANDS = new Map([
 	["create", () => createInstance()],
@@ -22,6 +23,7 @@ const RUNTIME_COMMANDS = new Map([
 	["destory", (sendResponse, data, tab) => saveColor(data, tab).then(() => sendResponse(true))],
 	["lastColor", (sendResponse) => getLastColor().then((_) => sendResponse(_))],
 	["lastSevenDay", (sendResponse) => getLastSevenDaysColor().then((_) => sendResponse(_))],
+	["createTab", (sendResponse, data) => createTab(data).then(() => sendResponse())]
 ]);
 
 const SHORTCUT_COMMANDS = new Map([["start-color-picker", () => createInstance()]]);
