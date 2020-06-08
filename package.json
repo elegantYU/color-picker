@@ -4,7 +4,7 @@
   "description": "最简洁方便的网页取色器[chrome插件]",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --config=config/webpack.watch.js --watch --fix",
+    "watch": "webpack --config=config/webpack.watch.js --fix",
     "build": "webpack --config=config/webpack.prod.js --fix",
     "prewatch": "node config/script.js",
     "prebuild": "node config/script.js",

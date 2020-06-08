@@ -3,23 +3,23 @@
  */
 const version = require("../src/config.json").version;
 const WriteJsonWebpackPlugin = require("write-json-webpack-plugin");
-let package = require("../package.json");
+let packageJson = require("../package.json");
 let manifest = require("../public/manifest.json");
 
-package.version = manifest.version = version;
+packageJson.version = manifest.version = version;
 
 const list = [
-  { origin: "../", filename: "package.json", json: package },
-  { origin: "../public", filename: "manifest.json", json: manifest },
-  { origin: "../dist", filename: "manifest.json", json: manifest },
+	{ origin: "../", filename: "package.json", json: packageJson },
+	{ origin: "../public", filename: "manifest.json", json: manifest },
+	{ origin: "../dist", filename: "manifest.json", json: manifest },
 ];
 
 module.exports = list.map(
-  ({ origin, filename, json }) =>
-    new WriteJsonWebpackPlugin({
-      pretty: true,
-      object: json,
-      path: origin,
-      filename,
-    })
+	({ origin, filename, json }) =>
+		new WriteJsonWebpackPlugin({
+			pretty: true,
+			object: json,
+			path: origin,
+			filename,
+		})
 );

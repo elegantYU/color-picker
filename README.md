@@ -3,7 +3,7 @@
 
 > 在下独立开发的第二款浏览器插件
 
-开发流程，移步[我的博客](https://elegantyu.github.io/)
+开发流程，移步[我的博客](https://elegantyu.github.io/2020/06/07/webpack+react/)
 
 > ~~等商店用户破500就开源~~
 > 
