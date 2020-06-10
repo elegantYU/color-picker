@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-02 15:51:20
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-10 18:42:04
+ * @LastEditTime: 2020-06-10 23:16:22
  * @Description: 颜色历史记录
  */
 
@@ -32,30 +32,36 @@ const deleteExceedDay = (colorGroup) => {
 };
 
 // 保存颜色
-const saveColor = ({ color }, { title, url, id }) =>
+const saveColor = (data, { title, url, id }) =>
 	new Promise((resolve) => {
 		const today = nowDate();
+		const { color } = data;
 
-		localGet("colorGroup").then((data) => {
-			const isEmpty = !Object.keys(data).length;
-			const oldData = isEmpty ? {} : deleteExceedDay(data["colorGroup"]);
-			const item = { title, url, color };
+		// 若无数据，esc退出，直接destory
+		if (color) {
+			localGet("colorGroup").then((data) => {
+				const isEmpty = !Object.keys(data).length;
+				const oldData = isEmpty ? {} : deleteExceedDay(data["colorGroup"]);
+				const item = { title, url, color };
 
-			// 是否有记录
-			let currData = {};
-			if (isEmpty) {
-				currData[today] = [item];
-			} else {
-				if (!oldData[today]) {
-					oldData[today] = [];
+				// 是否有记录
+				let currData = {};
+				if (isEmpty) {
+					currData[today] = [item];
+				} else {
+					if (!oldData[today]) {
+						oldData[today] = [];
+					}
+					currData = Object.assign(oldData, oldData[today].push(item));
 				}
-				currData = Object.assign(oldData, oldData[today].push(item));
-			}
 
-			localSet({ colorGroup: currData })
-				.then(() => tabSendMessage([{ id }], { command: "destory" }))
-				.then(() => resolve());
-		});
+				localSet({ colorGroup: currData })
+					.then(() => tabSendMessage([{ id }], { command: "destory" }))
+					.then(() => resolve());
+			});
+		} else {
+			tabSendMessage([{ id }], { command: "destory" }).then(() => resolve());
+		}
 	});
 
 // 获取上次采集颜色
@@ -67,8 +73,8 @@ const getLastColor = () =>
 				const keys = Object.keys(colorGroup).sort(
 					(a, b) => new Date(b).getTime() - new Date(a).getTime()
 				);
-				const lastDate = keys[0]
-				const groups = colorGroup[lastDate]
+				const lastDate = keys[0];
+				const groups = colorGroup[lastDate];
 				const color = groups.slice(-1)[0].color;
 				resolve(color);
 			} else {

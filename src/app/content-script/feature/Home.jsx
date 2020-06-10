@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from "react";
 import _ from "lodash";
 import Pointer from "./Pointer.jsx";
-import { startCapture } from "../../service";
+import { startCapture, destory } from "../../service";
 
 export default class Home extends Component {
 	constructor(props) {
@@ -71,15 +71,27 @@ export default class Home extends Component {
 		});
 	};
 
+	// esc 退出取色
+	escapePick = (e) => {
+		const { keyCode } = e;
+		if (keyCode === 27) {
+			destory({ color: "" });
+		}
+
+		e.preventDefault();
+	};
+
 	UNSAFE_componentWillMount() {
 		this.captureScreen();
 		window.addEventListener("scroll", this.scrollHandler, false);
 		window.addEventListener("resize", this.resizeHandler, false);
+		window.addEventListener("keydown", this.escapePick, false);
 	}
 
 	componentWillUnmount() {
 		window.removeEventListener("scroll", this.scrollHandler, false);
 		window.removeEventListener("resize", this.resizeHandler, false);
+		window.removeEventListener("keydown", this.escapePick, false);
 	}
 
 	render() {
