@@ -31,6 +31,13 @@
       height: 24px;
       object-fit: contain;
       margin-right: 6px;
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      img {
+        transform: rotate(15deg);
+      }
     }
   }
 

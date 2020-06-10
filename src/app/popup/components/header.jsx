@@ -6,7 +6,7 @@ export default class Header extends Component {
 	gotoEvaluation = () => {
 		// goto 评价
 		const params = {
-			url: "",
+			url: "https://chrome.google.com/webstore/detail/lkfniiefogmonnkjeaceppmeakpagfmg",
 			active: true,
 		};
 		createTab(params);
@@ -14,16 +14,15 @@ export default class Header extends Component {
 
 	render() {
 		const logo = chrome.runtime.getURL("static/icons/icon128.png");
-		// const { openSetting } = this.props;
+		const gotoStar = chrome.i18n.getMessage("starMe");
 
 		// 事件绑定函数别加括号啊...
 		return (
 			<div className="header">
-				<h1 onClick={this.gotoEvaluation}>
+				<h1 onClick={this.gotoEvaluation} title={gotoStar}>
 					<img src={logo} alt="" />
 					Color Picker
 				</h1>
-				{/* <i className="cp-iconfont cp-huaban" onClick={openSetting(true)}></i> */}
 			</div>
 		);
 	}
