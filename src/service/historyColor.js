@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-02 15:51:20
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-06 01:20:00
+ * @LastEditTime: 2020-06-10 18:42:04
  * @Description: 颜色历史记录
  */
 
@@ -38,7 +38,7 @@ const saveColor = ({ color }, { title, url, id }) =>
 
 		localGet("colorGroup").then((data) => {
 			const isEmpty = !Object.keys(data).length;
-			const oldData = isEmpty ? {} : deleteExceedDay(data["colorGroup"])
+			const oldData = isEmpty ? {} : deleteExceedDay(data["colorGroup"]);
 			const item = { title, url, color };
 
 			// 是否有记录
@@ -63,7 +63,12 @@ const getLastColor = () =>
 	new Promise((resolve) => {
 		localGet("colorGroup").then(({ colorGroup }) => {
 			if (colorGroup) {
-				const groups = Object.values(colorGroup).slice(-1)[0];
+				// Object.keys 要重新排序
+				const keys = Object.keys(colorGroup).sort(
+					(a, b) => new Date(b).getTime() - new Date(a).getTime()
+				);
+				const lastDate = keys[0]
+				const groups = colorGroup[lastDate]
 				const color = groups.slice(-1)[0].color;
 				resolve(color);
 			} else {

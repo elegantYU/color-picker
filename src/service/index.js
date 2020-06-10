@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-01 10:50:08
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-06 18:31:32
+ * @LastEditTime: 2020-06-10 18:42:26
  * @Description: 服务层接口（指background）
  */
 
@@ -42,3 +42,5 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 chrome.commands.onCommand.addListener((command) => {
 	SHORTCUT_COMMANDS.get(command)();
 });
+
+console.log('hello world')
