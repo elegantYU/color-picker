@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-02 15:51:20
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-10 23:16:22
+ * @LastEditTime: 2020-06-11 16:58:44
  * @Description: 颜色历史记录
  */
 
@@ -89,7 +89,7 @@ const getLastSevenDaysColor = () =>
 			if (colorGroup) {
 				const sevenDay = Object.values(colorGroup).slice(-7);
 				const colors = [].concat.apply([], sevenDay).map((v) => v.color);
-				const duplicateColors = [...new Set(colors)];
+				const duplicateColors = [...new Set(colors)].reverse();	//	合并 去重 倒序
 
 				resolve(duplicateColors);
 			} else {
