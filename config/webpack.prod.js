@@ -10,6 +10,7 @@ module.exports = merge(config, {
 	plugins: [
 		new FileManagerPlugin({
 			onEnd: {
+				delete: [path.resolve(__dirname, "../dist.zip")],
 				archive: [
 					{
 						source: path.resolve(__dirname, "../dist"),
