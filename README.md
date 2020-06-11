@@ -1,5 +1,5 @@
 ## color-picker
-[![time tracker](https://wakatime.com/badge/github/elegantYU/color-picker.svg)](https://wakatime.com/badge/github/elegantYU/color-picker)
+[![chrome web store](https://img.shields.io/chrome-web-store/v/lkfniiefogmonnkjeaceppmeakpagfmg.svg)](https://chrome.google.com/webstore/detail/lkfniiefogmonnkjeaceppmeakpagfmg) [![extension downloads](https://img.shields.io/chrome-web-store/users/lkfniiefogmonnkjeaceppmeakpagfmg.svg?label=users)](https://chrome.google.com/webstore/detail/lkfniiefogmonnkjeaceppmeakpagfmg) [![time tracker](https://wakatime.com/badge/github/elegantYU/color-picker.svg)](https://wakatime.com/badge/github/elegantYU/color-picker)
 
 > 在下独立开发的第二款浏览器插件
 
