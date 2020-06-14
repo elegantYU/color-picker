@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Sélecteur de couleurs (version pure)"
+  },
+  "shortName": {
+    "message": "Pipette à couleurs"
+  },
+  "description": {
+    "message": "Sélecteur de couleurs Web pur et simple"
+  }
+}

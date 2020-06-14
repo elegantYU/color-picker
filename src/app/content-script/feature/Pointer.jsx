@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Panel from "./Panel.jsx";
 import { convertRgbToHex } from "../../utils";
 import { slideFetch, destory } from "../../service";
@@ -9,6 +10,7 @@ export default class App extends Component {
 
 		this.state = {
 			isMove: false,
+			isClick: false,
 			top: null,
 			left: null,
 			centerColor: "rgb(255,255,255)",
@@ -28,6 +30,7 @@ export default class App extends Component {
 		if (!this.state.isMove) {
 			this.setState({
 				isMove: true,
+				isActive: false,
 			});
 		}
 
@@ -52,24 +55,36 @@ export default class App extends Component {
 		document.body.appendChild(tempInput);
 		tempInput.value = this.state.centerColorHex;
 		tempInput.select();
-		if (document.execCommand("copy")) {
-			document.execCommand("copy");
-		}
+		document.execCommand("copy");
 		document.body.removeChild(tempInput);
 
-		destory({ color });
+		this.setState({
+			isClick: true,
+		});
+
+		setTimeout(() => {
+			destory({ color });
+		}, 300);
 	};
 
 	render() {
-		const { ...props } = this.props;
-		const { isStart } = props;
-		const { top, left, colorGroups, centerColor, centerColorHex, isMove } = this.state;
+		const { isStart } = this.props;
+		const {
+			top,
+			left,
+			colorGroups,
+			centerColor,
+			centerColorHex,
+			isMove,
+			isClick,
+		} = this.state;
+		const pointerClass = `pointer-wrapper ${isClick && "clickAnimate"}`;
 
 		return (
 			<div id="ColorPickerPointer" onMouseMove={(e) => this.mousemoveHandler(e)}>
-				{isStart && isMove && (
+				{((isStart && isMove)) && (
 					<div
-						className="pointer-wrapper"
+						className={pointerClass}
 						style={{ top: `${top}px`, left: `${left}px`, backgroundColor: centerColor }}
 					>
 						<div className="pointer" onClick={(e) => this.clickHandler(e)}>
@@ -91,3 +106,7 @@ export default class App extends Component {
 		);
 	}
 }
+
+App.propTypes = {
+	isStart: PropTypes.bool,
+};

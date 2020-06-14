@@ -1,7 +1,11 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "supportLanguages": [
+    "ar",
     "en",
+    "es",
+    "fr",
+    "ru",
     "zh_CN",
     "zh_TW"
   ]

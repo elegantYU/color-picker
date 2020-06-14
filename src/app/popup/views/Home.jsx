@@ -42,10 +42,10 @@ export default class Home extends PureComponent {
 	};
 
 	getRandomBg = () => {
-		const LENGTH = 15;
+		const LENGTH = 10;
 		const colorClass = [];
 		for (let i = 0; i < LENGTH; i++) {
-			colorClass.push(`linearColor${i + 1}`);
+			colorClass.push(`pickerBtn_bgColor${i + 1}`);
 		}
 		const index = Math.floor(Math.random() * colorClass.length);
 
@@ -62,7 +62,7 @@ export default class Home extends PureComponent {
 		const anchorHome = chrome.i18n.getMessage("anchorHome");
 		const { colors, couldPick } = this.state;
 		const { openSetting } = this.props;
-		const randomLinear = this.getRandomBg();
+		const randomColor = this.getRandomBg();
 
 		return (
 			<Fragment>
@@ -71,7 +71,7 @@ export default class Home extends PureComponent {
 					<div id="home">
 						<h1>{anchorHome}</h1>
 						{couldPick ? (
-							<button className={`pickerBtn ${randomLinear}`} onClick={this.pickColor}>
+							<button className={`pickerBtn ${randomColor}`} onClick={this.pickColor}>
 								Start
 							</button>
 						) : (

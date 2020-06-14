@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Selector de color (versión pura)"
+  },
+  "shortName": {
+    "message": "Selector de color"
+  },
+  "description": {
+    "message": "Selector de color web puro y simple"
+  }
+}

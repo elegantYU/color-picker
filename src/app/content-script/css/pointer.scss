@@ -62,3 +62,25 @@
 .cp-waiting {
   cursor: wait !important;
 }
+
+.clickAnimate {
+  animation: clickAnimate 0.3s linear;
+}
+
+@keyframes clickAnimate {
+  0% {
+    transform: scale(0.95);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  60% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale((1));
+  }
+}

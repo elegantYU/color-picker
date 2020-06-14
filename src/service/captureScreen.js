@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-01 23:06:21
  * @LastEditors: elegantYu
- * @LastEditTime: 2020-06-02 15:47:13
+ * @LastEditTime: 2020-06-14 14:59:09
  * @Description: 屏幕截图background主要模块
  */
 
@@ -9,7 +9,7 @@ import { tabCurrent, tabSendMessage, tabCapture } from "./base";
 
 let currentCanvas = null;
 
-//  页面start
+//  页面start	mode: shortcut | null
 const createInstance = () => tabCurrent().then((tab) => tabSendMessage(tab, { command: "create" }));
 
 //  转换canvas

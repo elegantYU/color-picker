@@ -26,15 +26,13 @@
 		cursor: pointer;
 		margin-bottom: 20px;
 		box-shadow: rgba(0, 0, 0, 0.6) 0 2px 6px;
-		transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-position 0.2s linear;
+		transition: transform 0.2s ease;
 		font-size: 30px;
 		color: #fff;
 		text-shadow: 0 1px #000, 1px 0 #000, -1px 0 #000, 0 -1px #000;
-		background-size: 400%;
-		background-position: center left;
 
 		&:hover {
-			transform: scale(0.95);
+			transform: scale(0.96);
 			background-position: center right;
 		}
 	}
@@ -93,49 +91,204 @@
 	}
 }
 
+.pickerBtn_bgColor1 {
+	animation: bgColor1 15s linear alternate infinite;
+}
+.pickerBtn_bgColor2 {
+	animation: bgColor2 15s linear alternate infinite;
+}
+.pickerBtn_bgColor3 {
+	animation: bgColor3 15s linear alternate infinite;
+}
+.pickerBtn_bgColor4 {
+	animation: bgColor4 15s linear alternate infinite;
+}
+.pickerBtn_bgColor5 {
+	animation: bgColor5 15s linear alternate infinite;
+}
+.pickerBtn_bgColor6 {
+	animation: bgColor6 15s linear alternate infinite;
+}
+.pickerBtn_bgColor7 {
+	animation: bgColor7 15s linear alternate infinite;
+}
+.pickerBtn_bgColor8 {
+	animation: bgColor8 15s linear alternate infinite;
+}
+.pickerBtn_bgColor9 {
+	animation: bgColor9 15s linear alternate infinite;
+}
+.pickerBtn_bgColor10 {
+	animation: bgColor10 15s linear alternate infinite;
+}
 
-.linearColor1 {
-	background-image: linear-gradient(15deg, #ff7b89, #8a5082, #6f5f90, #758eb7, #a5cad2);
+@keyframes bgColor1 {
+	0% {
+		background-color: #ff7b89;
+	}
+	20% {
+		background-color: #8a5082;
+	}
+	50% {
+		background-color: #6f5f90;
+	}
+	75% {
+		background-color: #758eb7;
+	}
+	100% {
+		background-color: #a5cad2;
+	}
 }
-.linearColor2 {
-	background-image: linear-gradient(-30deg, #36e3ce, #d0e6a5, #ffdd95, #fd9385, #ccabda);
+@keyframes bgColor2 {
+	0% {
+		background-color: #36e3ce;
+	}
+	20% {
+		background-color: #d0e6a5;
+	}
+	50% {
+		background-color: #ffdd95;
+	}
+	75% {
+		background-color: #fd9385;
+	}
+	100% {
+		background-color: #ccabda;
+	}
 }
-.linearColor3 {
-	background-image: linear-gradient(15deg, #69524e, #c0a29b, #3e2c2b, #a26a77, #827783);
+@keyframes bgColor3 {
+	0% {
+		background-color: #f3ccdb;
+	}
+	20% {
+		background-color: #e5e5f3;
+	}
+	50% {
+		background-color: #a8d1e1;
+	}
+	75% {
+		background-color: #62a9c8;
+	}
+	100% {
+		background-color: #147ebc;
+	}
 }
-.linearColor4 {
-	background-image: linear-gradient(25deg, #f3ccdb, #e5e5f3, #a8d1e1, #62a9c8, #147ebc);
+@keyframes bgColor4 {
+	0% {
+		background-color: #6ac7e5;
+	}
+	20% {
+		background-color: #feb25d;
+	}
+	50% {
+		background-color: #ffd154;
+	}
+	75% {
+		background-color: #ff5685;
+	}
+	100% {
+		background-color: #ffc4c8;
+	}
 }
-.linearColor5 {
-	background-image: linear-gradient(-15deg, #6ac7e5, #feb25d, #ffd154, #ff5685, #ffc4c8);
+@keyframes bgColor5 {
+	0% {
+		background-color: #faba96;
+	}
+	20% {
+		background-color: #33539e;
+	}
+	50% {
+		background-color: #f29c0f;
+	}
+	75% {
+		background-color: #a567be;
+	}
+	100% {
+		background-color: #e67c09;
+	}
 }
-.linearColor6 {
-	background-image: linear-gradient(-15deg, #faba96, #33539e, #f29c0f, #a567be, #e67c09);
+@keyframes bgColor6 {
+	0% {
+		background-color: #ce237f;
+	}
+	20% {
+		background-color: #ec1c49;
+	}
+	50% {
+		background-color: #f16841;
+	}
+	75% {
+		background-color: #f5dc67;
+	}
+	100% {
+		background-color: #2c9599;
+	}
 }
-.linearColor7 {
-	background-image: linear-gradient(-30deg, #ce237f, #ec1c49, #f16841, #f5dc67, #2c9599);
+@keyframes bgColor7 {
+	0% {
+		background-color: #0162a7;
+	}
+	20% {
+		background-color: #3e9fb2;
+	}
+	50% {
+		background-color: #feb500;
+	}
+	75% {
+		background-color: #cd9489;
+	}
+	100% {
+		background-color: #b41d6c;
+	}
 }
-.linearColor8 {
-	background-image: linear-gradient(20deg, #0162a7, #3e9fb2, #feb500, #cd9489, #b41d6c);
+@keyframes bgColor8 {
+	0% {
+		background-color: #ed4557;
+	}
+	20% {
+		background-color: #b8010b;
+	}
+	50% {
+		background-color: #d9569e;
+	}
+	75% {
+		background-color: #2b1b2a;
+	}
+	100% {
+		background-color: #fcbc52;
+	}
 }
-.linearColor9 {
-	background-image: linear-gradient(25deg, #ed4557, #b8010b, #d9569e, #2b1b2a, #fcbc52);
+@keyframes bgColor9 {
+	0% {
+		background-color: #3d6656;
+	}
+	20% {
+		background-color: #253e33;
+	}
+	50% {
+		background-color: #a52f09;
+	}
+	75% {
+		background-color: #ff7e40;
+	}
+	100% {
+		background-color: #ffbac6;
+	}
 }
-.linearColor10 {
-	background-image: linear-gradient(30deg, #3d6656, #253e33, #a52f09, #ff7e40, #ffbac6);
-}
-.linearColor11 {
-	background-image: linear-gradient(-30deg, #d9ecf2, #f56a79, #ff414d, #1aa687, #002d40);
-}
-.linearColor12 {
-	background-image: linear-gradient(-10deg, #fcf5ef, #fea735, #fe7235, #00c3ff, #0077ff);
-}
-.linearColor13 {
-	background-image: linear-gradient(-20deg, #fea88c, #ffa3a6, #f583b3, #cd69a7, #ed7179);
-}
-.linearColor14 {
-	background-image: linear-gradient(25deg, #947839, #751102, #e78332, #efb20c, #326569);
-}
-.linearColor15 {
-	background-image: linear-gradient(20deg, #999, #555, #fb6602, #f6a705, #af948f);
+@keyframes bgColor10 {
+	0% {
+		background-color: #fcf5ef;
+	}
+	20% {
+		background-color: #fea735;
+	}
+	50% {
+		background-color: #fe7235;
+	}
+	75% {
+		background-color: #00c3ff;
+	}
+	100% {
+		background-color: #0077ff;
+	}
 }

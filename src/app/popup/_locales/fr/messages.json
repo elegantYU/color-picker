@@ -1,0 +1,26 @@
+{
+	"copy": {
+		"message": "copie"
+	},
+	"copied": {
+		"message": "Copié!"
+	},
+	"anchorHome": {
+		"message": "Couleur"
+	},
+	"anchorHistory": {
+		"message": "record d'histoire"
+	},
+	"historyTip": {
+		"message": "Enregistrez les 7 derniers jours de couleur"
+	},
+	"cannotPick": {
+		"message": "Impossible d'obtenir la couleur de cette page😿"
+	},
+	"hotkeyTip": {
+		"message": "Alt+C Identification rapide😊"
+	},
+	"starMe": {
+		"message": "Demandez des éloges~ (*≧∪≦)"
+	}
+}
