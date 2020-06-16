@@ -9,6 +9,10 @@
 > 
 > 哈哈哈哈 淦
 
+谷歌商店：[下载地址](https://chrome.google.com/webstore/detail/lkfniiefogmonnkjeaceppmeakpagfmg)
+
+不能翻墙地址：[下载地址](https://github.com/elegantYU/color-picker/releases/tag/1.4.0)
+
 ----
 ## 功能设计
 
