@@ -7,21 +7,29 @@
 
 > ~~等商店用户破500就开源~~
 > 
-> 哈哈哈哈
+> 哈哈哈哈 淦
 
 ----
-### 技术要点
+## 功能设计
 
-#### webpack
+- [x] 页面截图后根据鼠标坐标分析canvas像素点
+- [x] 快捷键启动识别
+- [x] 点击复制当前Hex格式颜色
+- [x] 保存7天内点击后的颜色
+
+
+## 技术要点
+
+### webpack
 
 开发之基石，基本配置都一样，由于插件开发及打包的特殊性，配置了同步版本及合并各模块中国际化文件的脚本。
 
-#### react
+### react
 
 了解了react生命周期hooks，react-router-dom的使用，propTypes对于props内容的约定，及装饰器的使用(装饰器这东西写出来就有高级那味儿了)。
 
 下版本再加入group-transition动画，移动鼠标dom渲染也可以尝试使用canvas替换。
 
-#### content-script & popup & background 通信
+### content-script & popup & background 通信
 
 三处脚本的数据交换可谓是插件开发的关键点，也是最容易混乱的地方，后续要整合下事件流
