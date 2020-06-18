@@ -1,8 +1,10 @@
 {
   "name": "color-picker",
   "version": "1.4.0",
+  "author": "elegantYU",
+  "license": "MPL",
   "description": "最简洁方便的网页取色器[chrome插件]",
-  "main": "index.js",
+  "repository": "https://github.com/elegantYU/color-picker",
   "scripts": {
     "watch": "webpack --config=config/webpack.watch.js --fix",
     "build": "webpack --config=config/webpack.prod.js --fix",
@@ -10,9 +12,6 @@
     "prebuild": "node config/script.js",
     "postbuild": "node config/script.js"
   },
-  "keywords": [],
-  "author": "elegantYU",
-  "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
