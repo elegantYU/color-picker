@@ -1,6 +1,6 @@
 {
   "name": "color-picker",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "elegantYU",
   "license": "MPL",
   "description": "最简洁方便的网页取色器[chrome插件]",
@@ -13,6 +13,14 @@
     "postbuild": "node config/script.js"
   },
   "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-react": "^7.20.0",
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
@@ -37,10 +45,6 @@
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "react-transition-group": "^4.4.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
@@ -49,11 +53,5 @@
     "webpack-cli": "^3.3.11",
     "webpack-merge": "^4.2.2",
     "write-json-webpack-plugin": "^1.1.0"
-  },
-  "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.0.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-react": "^7.20.0"
   }
 }

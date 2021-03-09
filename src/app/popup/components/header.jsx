@@ -6,7 +6,7 @@ export default class Header extends Component {
 	gotoEvaluation = () => {
 		// goto 评价
 		const params = {
-			url: "https://chrome.google.com/webstore/detail/lkfniiefogmonnkjeaceppmeakpagfmg",
+			url: "https://github.com/elegantYU/color-picker",
 			active: true,
 		};
 		createTab(params);
