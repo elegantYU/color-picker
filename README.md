@@ -1,9 +1,10 @@
-<center>
+<h1 align="center">
+  <br />
   <img src="https://raw.githubusercontent.com/elegantYU/color-picker/master/public/icons/icon128.png" alt="color picker" />
   <br />
-  <h1>color-picker</h1>
+  color-picker
   <br/>
-</center>
+</h1>
 
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0) [![chrome web store](https://img.shields.io/chrome-web-store/v/lkfniiefogmonnkjeaceppmeakpagfmg.svg)](https://chrome.google.com/webstore/detail/lkfniiefogmonnkjeaceppmeakpagfmg) [![extension downloads](https://img.shields.io/chrome-web-store/users/lkfniiefogmonnkjeaceppmeakpagfmg.svg?label=users)](https://chrome.google.com/webstore/detail/lkfniiefogmonnkjeaceppmeakpagfmg) [![time tracker](https://wakatime.com/badge/github/elegantYU/color-picker.svg)](https://wakatime.com/badge/github/elegantYU/color-picker)
 
