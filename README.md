@@ -16,6 +16,8 @@
 
 谷歌商店：[下载地址](https://chrome.google.com/webstore/detail/lkfniiefogmonnkjeaceppmeakpagfmg)
 
+Edge商店：[下载地址](https://microsoftedge.microsoft.com/addons/detail/pdhhpogaoiegnkncoaalgpecokdimfpc)
+
 不能翻墙地址：[下载地址](https://github.com/elegantYU/color-picker/releases/tag/1.4.0)
 
 ----
